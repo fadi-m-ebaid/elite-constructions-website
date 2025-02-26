@@ -1,0 +1,98 @@
+import { CommunityCategoryEnum, CommunityType } from "@/types/communityTypes";
+
+
+
+
+export const CommunityData: CommunityType[] = [
+  {
+    id: "garbage-chute-article",
+    title: "The importance of garbage chute in residential towers",
+    content: "",
+    type:"community",
+    author: {
+      img: "",
+      name: "Marwa Eltokhy",
+    },
+    publishDate: new Date("2024-04-04"),
+    publishCategory: CommunityCategoryEnum.WASTE_MANAGEMENT,
+    img: "/community/garbage-article-main.jpg",
+    bgImg: "/community/garbage-article-main.jpg",
+    tags: [CommunityCategoryEnum.GARBAGE_CHUTES, CommunityCategoryEnum.WASTE_MANAGEMENT],
+    imgGallery: [],
+    clientsIds: [],
+    servicesIds: [],
+  },
+  {
+    id: "what-are-mechanical-works",
+    title: "What are mechanical works? What do they include?",
+    content: "",
+    type:"community",
+    author: {
+      img: "",
+      name: "Marwa Eltokhy",
+    },
+    publishDate: new Date("2024-04-03"),
+    publishCategory: CommunityCategoryEnum.MECHANICAL_WORK,
+    img: "/community/mechanical-article-1.jpg",
+    bgImg: "/community/mechanical-article-1.jpg",
+    tags: [CommunityCategoryEnum.MECHANICAL_WORK, CommunityCategoryEnum.CONSTRUCTION],
+    imgGallery: [],
+    clientsIds: [],
+    servicesIds: [],
+  },
+  {
+    id: "elite-debris-chute",
+    title: "Elite Debris Chute Your safe way for a safe site",
+    content: "",
+    type:"community",
+    author: {
+      img: "",
+      name: "Marwa Eltokhy",
+    },
+    publishDate: new Date("2024-04-03"),
+    publishCategory: CommunityCategoryEnum.WASTE_MANAGEMENT,
+    img: "/community/Elite-Debris-Chute-main.jpeg",
+    bgImg: "/community/Elite-Debris-Chute-BG.jpg",
+    tags: [CommunityCategoryEnum.DERBIS_CHUTE, CommunityCategoryEnum.WASTE_MANAGEMENT],
+    imgGallery: [],
+    clientsIds: [],
+    servicesIds: [],
+  },
+  {
+    id: "garbage-chutes",
+    title: "What are garbage chutes? and how do they work?",
+    content: "",
+    type:"community",
+    author: {
+      img: "",
+      name: "Marwa Eltokhy",
+    },
+    publishDate: new Date("2024-04-03"),
+    publishCategory: CommunityCategoryEnum.WASTE_MANAGEMENT,
+    img: "/community/garbage-chutes.jpg",
+    bgImg: "/community/garbage-chutes.jpg",
+    tags: [CommunityCategoryEnum.GARBAGE_CHUTES, CommunityCategoryEnum.WASTE_MANAGEMENT],
+    imgGallery: [],
+    clientsIds: [],
+    servicesIds: [],
+  },
+
+  {
+    id: "what-is-waste-management",
+    title: "What is Waste Management? What does it involve?",
+    content: "",
+    type:"community",
+    author: {
+      img: "",
+      name: "Marwa Eltokhy",
+    },
+    publishDate: new Date("2024-04-03"),
+    publishCategory: CommunityCategoryEnum.WASTE_MANAGEMENT,
+    img: "/community/What-is-Waste-Management_.jpg",
+    bgImg: "/community/What-is-Waste-Management_.jpg",
+    tags: [CommunityCategoryEnum.CONSTRUCTION, CommunityCategoryEnum.WASTE_MANAGEMENT],
+    imgGallery: [],
+    clientsIds: [],
+    servicesIds: [],
+  },
+];
