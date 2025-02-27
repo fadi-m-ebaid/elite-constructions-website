@@ -5,6 +5,7 @@ import { HomepageHoverDataType, HomepageSectionDataType } from "@/types/homepage
 import { hoverZonesData } from "@/data/homepageSectionData";
 import Link from "next/link";
 import AOS from "aos";
+import LazyVideo from "../common/video"; // Import the LazyVideo component
 
 interface HomepageSectionProps {
   section: HomepageSectionDataType;
@@ -20,6 +21,7 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
     layout,
     hoverZones,
     type,
+    poster
   } = section;
 
   // State to track hover and fade effect
@@ -34,23 +36,18 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
   }, []);
 
   const handleMouseEnter = (zoneId: string) => {
-    // Start fade-out
     setFade(true);
-
-    // Wait for fade-out to complete before updating content
     setTimeout(() => {
       const hoverItem = hoverZonesData.find((item) => item.id === zoneId);
       if (hoverItem) {
         setHoveredZone(hoverItem);
         setDisplayData({ title: hoverItem.title, content: hoverItem.content });
       }
-      // Fade back in with the new content
       setFade(false);
-    }, 500); // Duration should match your CSS transition duration
+    }, 500);
   };
 
   const handleMouseLeave = () => {
-    // Optionally, fade out then revert to original content
     setFade(true);
     setTimeout(() => {
       setHoveredZone(null);
@@ -61,14 +58,15 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
 
   return (
     <section id={id} className={`homepageSection ${layout}`}>
-      {/* Background Video */}
-      <video className="background-video" autoPlay loop muted playsInline preload="auto"  onCanPlayThrough={(e) => (e.currentTarget.style.opacity = "1")}>
-        <source src={backgroundWebm} type="video/webm" />
-        <source src={backgroundMp4} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      {/* ✅ Background Video (Lazy Loaded) */}
+      <LazyVideo
+        className="background-video"
+        poster={poster}
+        srcWebm={backgroundWebm}
+        srcMp4={backgroundMp4}
+      />
 
-      {/* Render Hover Zones with Videos */}
+      {/* ✅ Render Hover Zones with Videos */}
       <div className="hoverZones-container">
         {hoverZones?.map((zone) => (
           <div
@@ -83,20 +81,15 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
             onMouseEnter={() => handleMouseEnter(zone.zoneDataId)}
             onMouseLeave={handleMouseLeave}
           >
-            {/* Fixed-sized Target Animation at Hover Point */}
-            <video
+            {/* ✅ Target Animation (Lazy Loaded) */}
+            <LazyVideo
               className="target-animation"
-              src="/homepage-popups-2/Target_transparent.webm"
-              autoPlay
-              muted
-              loop
-              playsInline
-              onCanPlayThrough={(e) => (e.currentTarget.style.opacity = "1")}
+              srcWebm="/homepage-popups-2/Target_transparent.webm"
             />
 
-            {/* Hovered video inside the zone */}
+            {/* ✅ Hovered video inside the zone (Lazy Loaded) */}
             {hoveredZone?.id === zone.zoneDataId && hoveredZone.onHoverTitle && (
-              <video
+               <video
                 className="hover-video"
                 src={hoveredZone.onHoverTitle}
                 autoPlay
