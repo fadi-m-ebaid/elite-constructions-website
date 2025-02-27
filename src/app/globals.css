@@ -837,6 +837,7 @@ body {
   top: 0;
   left: 0;
   z-index: 0;
+  opacity: 0.9;
 }
 
 /* 🏷️ Logo Styling */
@@ -1132,7 +1133,7 @@ a {
 
 /* 🔹 Fix the image display */
 .project-detail-slider-image {
-  width: 100%;
+  width: 45vw;
   height: 100%;
   object-fit: cover; /* ✅ Ensures image fills the box */
   transition: transform 0.8s ease-in-out;
@@ -2266,6 +2267,7 @@ textarea {
   align-items: center;
   justify-content: center;
   transition: opacity 0.4s ease-out;
+  z-index: 9999;
 }
 
 .loader-hidden {
@@ -2283,8 +2285,6 @@ textarea {
 .page-content.loaded {
   opacity: 1;
 }
-
-
 
 /* 🟢 Responsive Adjustments */
 @media (max-width: 1024px) {

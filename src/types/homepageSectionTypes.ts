@@ -28,4 +28,5 @@ export interface HomepageSectionDataType extends BaseType{
   layout: "centered" | "left-aligned" | "right-aligned";
   sectionDetailRelatedId?: ServiceType["id"] | ProjectType["id"];
   hoverZones?: HoverZoneDataType[];
+  poster?: string;
 }

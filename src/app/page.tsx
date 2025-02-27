@@ -1,6 +1,5 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
 import HomepageSection from "@/components/homepageSections/homepageSections";
 import { homepageSectionData } from "@/data/homepageSectionData";
 import { homepagePartenrsSliderData } from "@/data/clientsData";

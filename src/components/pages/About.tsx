@@ -45,7 +45,7 @@ const AboutPage = () => {
           </p>
         </div>
         <img loading="lazy"
-          src="/about/about-page-1.png"
+          src="/about/about-page-1.jpg"
           alt="Construction worker with blueprints"
           className="about-image"
         />
@@ -53,7 +53,7 @@ const AboutPage = () => {
 
       <div className="about-section" data-aos="fade-up">
         <img loading="lazy"
-          src="/about/about-page-2.png"
+          src="/about/about-page-2.jpg"
           alt="Handshake between engineers"
           className="about-image"
         />
@@ -85,7 +85,7 @@ const AboutPage = () => {
           </p>
         </div>
         <img loading="lazy"
-          src="/about/about-page-3.png"
+          src="/about/about-page-3.jpg"
           alt="Construction worker holding blueprints"
           className="about-image"
         />
@@ -154,7 +154,7 @@ const AboutPage = () => {
 
         <div className="inspiration-image">
           <img loading="lazy"
-            src="/about/about-inspiration.png"
+            src="/about/about-inspiration.jpg"
             alt="Engineers working on blueprints"
           />
         </div>

@@ -1,18 +1,5 @@
 import { ServiceType } from "@/types/servicesTypes";
 
-// const services = [
-//   { category: "services", id: "waste-management", name: "Waste Management" },
-//   { category: "services", id: "infrastructure", name: "Infrastructure Works" },
-//   { category: "services", id: "electrical", name: "Electrical Works" },
-//   { category: "services", id: "mechanical", name: "Mechanical Works" },
-//   { category: "services", id: "metal", name: "Metal Works" },
-//   {
-//     category: "services",
-//     id: "interior-exterior",
-//     name: "Interior & Exterior Finishes",
-//   },
-// ];
-
 export const ServicesData: ServiceType[] = [
   {
     id: "waste-management",

@@ -5,6 +5,7 @@ import { homepagePartenrsSliderData } from "@/data/clientsData";
 import PagesFooter from "./pagesFooter";
 import { useSearchParams } from "next/navigation";
 import AOS from "aos";
+import LazyVideo from "../common/video";
 
 interface LandingPageProps<T> {
   category: string;
@@ -13,16 +14,10 @@ interface LandingPageProps<T> {
   containerClass?: string; // Optional class for styling
 }
 
-// const categoryDataMap = {
-//   projects: ProjectsData as ProjectType[],
-//   services: ServicesData as ServiceType[],
-//   community: CommunityData as CommunityType[],
-// };
-
 const headerBackgrounds: { [key: string]: string } = {
   about: "/assets/about-us-header.jpeg",
   services: "/assets/about-us-header.jpeg",
-  community: "/community/web vid _compressed.mp4",
+  community: "/community/Web Vid  Compressed.webm",
   careers: "/assets/careers-header.jpeg",
   contact: "/assets/contact-us-header.jpeg",
   projects: "/assets/projects-header.jpeg",
@@ -55,10 +50,12 @@ const LandingPage = <T,>({
       <div className="category-header">
         {/* Use a video for "community", otherwise use an image background */}
         {category === "community" ? (
-          <video autoPlay loop muted playsInline preload="auto" className="category-video-bg"  onCanPlayThrough={(e) => (e.currentTarget.style.opacity = "1")}>
-            <source src={backgroundImage} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+          <LazyVideo
+            className="category-video-bg"
+            poster="/community/videoPoster.jpg"
+            srcWebm={backgroundImage}
+            srcMp4={""}
+          />
         ) : (
           <div
             className="category-image-bg"
@@ -69,7 +66,8 @@ const LandingPage = <T,>({
         )}
 
         {/* Logo & Title */}
-        <img loading="lazy"
+        <img
+          loading="lazy"
           src="/assets/logo-light-300x300.png"
           alt="Logo"
           className="category-logo"
@@ -100,11 +98,14 @@ const LandingPage = <T,>({
       <div
         className={
           containerClass ? `${containerClass} col-md-12` : "default-container"
-        } data-aos="fade-in"
+        }
+        data-aos="fade-in"
       >
         {data.map((item, index) =>
           ["careers", "contact", "about"].includes(category) ? (
-            <div key={index} data-aos="fade-in">{renderCard(item)}</div> // ✅ Use index as key fallback
+            <div key={index} data-aos="fade-in">
+              {renderCard(item)}
+            </div> // ✅ Use index as key fallback
           ) : (
             <Link
               key={index}
