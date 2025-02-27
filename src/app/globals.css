@@ -2254,6 +2254,38 @@ textarea {
 
 /* ---------------------------------------------------------------------------------------------------- */
 
+
+
+/* 🚀 Keep loader visible until content is actually rendered */
+.loader-container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: black; /* Match background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.4s ease-out;
+}
+
+.loader-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* 🚀 Hide content until fully loaded */
+.page-content {
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+/* 🚀 Show content smoothly after loader disappears */
+.page-content.loaded {
+  opacity: 1;
+}
+
+
+
 /* 🟢 Responsive Adjustments */
 @media (max-width: 1024px) {
   .projects-container,

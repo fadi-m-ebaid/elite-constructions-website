@@ -62,7 +62,7 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
   return (
     <section id={id} className={`homepageSection ${layout}`}>
       {/* Background Video */}
-      <video className="background-video" autoPlay loop muted playsInline preload="auto">
+      <video className="background-video" autoPlay loop muted playsInline preload="auto"  onCanPlayThrough={(e) => (e.currentTarget.style.opacity = "1")}>
         <source src={backgroundWebm} type="video/webm" />
         <source src={backgroundMp4} type="video/mp4" />
         Your browser does not support the video tag.
@@ -91,6 +91,7 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
               muted
               loop
               playsInline
+              onCanPlayThrough={(e) => (e.currentTarget.style.opacity = "1")}
             />
 
             {/* Hovered video inside the zone */}
@@ -103,6 +104,7 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
                 loop
                 playsInline
                 preload="auto"
+                onCanPlayThrough={(e) => (e.currentTarget.style.opacity = "1")}
               />
             )}
           </div>

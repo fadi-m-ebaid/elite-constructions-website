@@ -55,7 +55,7 @@ const LandingPage = <T,>({
       <div className="category-header">
         {/* Use a video for "community", otherwise use an image background */}
         {category === "community" ? (
-          <video autoPlay loop muted playsInline preload="auto" className="category-video-bg">
+          <video autoPlay loop muted playsInline preload="auto" className="category-video-bg"  onCanPlayThrough={(e) => (e.currentTarget.style.opacity = "1")}>
             <source src={backgroundImage} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
