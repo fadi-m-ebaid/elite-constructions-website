@@ -6,7 +6,7 @@ export default function PagesFooter() {
   return (
     <section>
       <div className="category-image-2">
-        <img src="/assets/servicesLanding-2.jpg" />
+        <img src="/assets/servicesLanding-2.jpg" loading="lazy" />
       </div>
       <div className="pages-footer">
         <p className="pages-footer-desc">

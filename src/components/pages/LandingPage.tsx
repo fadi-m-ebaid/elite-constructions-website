@@ -55,7 +55,7 @@ const LandingPage = <T,>({
       <div className="category-header">
         {/* Use a video for "community", otherwise use an image background */}
         {category === "community" ? (
-          <video autoPlay loop muted playsInline className="category-video-bg">
+          <video autoPlay loop muted playsInline preload="auto" className="category-video-bg">
             <source src={backgroundImage} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
@@ -69,7 +69,7 @@ const LandingPage = <T,>({
         )}
 
         {/* Logo & Title */}
-        <img
+        <img loading="lazy"
           src="/assets/logo-light-300x300.png"
           alt="Logo"
           className="category-logo"
@@ -120,7 +120,7 @@ const LandingPage = <T,>({
       {category === "services" && (
         <div>
           <div className="category-image-back">
-            <img src="/assets/services-landing-1.jpeg" />
+            <img loading="lazy" src="/assets/services-landing-1.jpeg" />
           </div>
           <div className="category-brief-container">
             <div className="category-brief-description row">

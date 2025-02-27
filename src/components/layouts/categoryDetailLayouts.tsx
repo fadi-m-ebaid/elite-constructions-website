@@ -572,7 +572,7 @@ export const CategoryDetailLayouts: Record<
                 }}
               >
                 <figure id="attachment_11326" className="wp-caption alignleft">
-                  <img
+                  <img loading="lazy"
                     className="size-medium wp-image-11326"
                     title="What are garbage chutes? and how do they work? 2"
                     src="/community/garbage-chute-in-article.jpeg"

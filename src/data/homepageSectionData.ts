@@ -60,7 +60,7 @@ export const hoverZonesData: HomepageHoverDataType[] = [
   },
   {
     id: "hospitality",
-    onHoverTitle: "/homepage-popups-2/Hospitality.webm",
+    onHoverTitle: "/homepage-popups-2/hospitality.webm",
     title: "Hospitality",
     content:
       "Providing exceptional hotel services with comprehensive comfort and entertainment options, ensuring a unique and distinguished hospitality experience for guests.",

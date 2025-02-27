@@ -77,7 +77,7 @@ export default function Slider({ items, style }: Props) {
             <div
               className={`${style?.className}-slider-wrapper slider-wrapper`}
             >
-              <img
+              <img loading="lazy"
                 src={item.img || "" || "/placeholder.png"}
                 alt={item?.title || "Slide Image"}
                 width={300}

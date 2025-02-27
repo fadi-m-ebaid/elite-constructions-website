@@ -36,7 +36,7 @@ export default function CustomNavbar() {
       <Container fluid>
         {/* Brand */}
         <Navbar.Brand href="/" className="navbar-brand">
-          <img src="/assets/logo-07.png" width={50} height={50} className="navbar-logo" alt="Logo" />
+          <img loading="lazy" src="/assets/logo-07.png" width={50} height={50} className="navbar-logo" alt="Logo" />
         </Navbar.Brand>
 
         {/* Toggler */}

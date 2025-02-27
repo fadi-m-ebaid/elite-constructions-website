@@ -41,7 +41,7 @@ const DetailPage = <T,>({
             backgroundPosition: "center",
           }}
         >
-          <img className="details-logo" src="/assets/logo-light-300x300.png"/>
+          <img loading="lazy" className="details-logo" src="/assets/logo-light-300x300.png"/>
           <h1  className="details-header-title col-md-8">
             {(data as any).title.charAt(0).toUpperCase() +
               (data as any).title.slice(1)}
@@ -63,7 +63,7 @@ const DetailPage = <T,>({
             <div className="community-header-meta">
               {/* Author Info */}
               <div className="community-meta-item community-author">
-                <img
+                <img loading="lazy"
                   src={(data as any).author.img || "/assets/default-user.png"}
                   alt={(data as any).author.name}
                   className="community-author-img"
@@ -124,7 +124,7 @@ const DetailPage = <T,>({
       {category === "services" && (
         <div className={`${category}-info-details-container row`} data-aos="fade-in">
           <div className={`${category}-info-img col-md-6`}>
-            <img src={(data as any).img2}></img>
+            <img loading="lazy" src={(data as any).img2}></img>
           </div>
           <div className={`${category}-info-data container col-md-6`}>
             <div className="row">
