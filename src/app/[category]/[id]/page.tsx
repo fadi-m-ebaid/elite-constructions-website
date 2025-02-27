@@ -7,6 +7,7 @@ import { ServicesData } from "@/data/servicesData";
 import { CommunityData } from "@/data/communityData";
 import { CategoryDetailLayouts } from "@/components/layouts/categoryDetailLayouts";
 import LoadingSpinner from "@/components/common/Spinner";
+import PageLoader from "@/components/common/PageLoader";
 
 /**
  * The props that your page component receives.
@@ -46,35 +47,17 @@ function DynamicDetail({ params, searchParams }: DynamicDetailProps) {
     return <p>Page not found</p>;
   }
 
-  // Optional: You can still maintain a manual loading state for other resources.
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // This effect waits for the full page load (if needed for additional resources).
-    const handlePageLoad = () => setLoading(false);
-
-    if (document.readyState === "complete") {
-      handlePageLoad();
-    } else {
-      window.addEventListener("load", handlePageLoad);
-      return () => window.removeEventListener("load", handlePageLoad);
-    }
-  }, []);
-
-  // If still loading, show a spinner.
-  if (loading) {
-    return <LoadingSpinner />;
-  }
-
   // Render the DetailPage with the proper props.
   return (
-    <DetailPage
-      category={category}
-      categoryData={dataArr}
-      data={data}
-      renderDetail={layout.renderDetail}
-      detailContainerClass={layout.detailContainerClass}
-    />
+    <PageLoader>
+      <DetailPage
+        category={category}
+        categoryData={dataArr}
+        data={data}
+        renderDetail={layout.renderDetail}
+        detailContainerClass={layout.detailContainerClass}
+      />
+    </PageLoader>
   );
 }
 

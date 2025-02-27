@@ -44,7 +44,7 @@ const AboutPage = () => {
             multitude of sectors.
           </p>
         </div>
-        <img
+        <img loading="lazy"
           src="/about/about-page-1.png"
           alt="Construction worker with blueprints"
           className="about-image"
@@ -52,7 +52,7 @@ const AboutPage = () => {
       </div>
 
       <div className="about-section" data-aos="fade-up">
-        <img
+        <img loading="lazy"
           src="/about/about-page-2.png"
           alt="Handshake between engineers"
           className="about-image"
@@ -84,7 +84,7 @@ const AboutPage = () => {
             country.
           </p>
         </div>
-        <img
+        <img loading="lazy"
           src="/about/about-page-3.png"
           alt="Construction worker holding blueprints"
           className="about-image"
@@ -153,7 +153,7 @@ const AboutPage = () => {
         </div>
 
         <div className="inspiration-image">
-          <img
+          <img loading="lazy"
             src="/about/about-inspiration.png"
             alt="Engineers working on blueprints"
           />

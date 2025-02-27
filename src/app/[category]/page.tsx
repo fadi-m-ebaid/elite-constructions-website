@@ -11,6 +11,7 @@ import { CareersData } from "@/data/careersData";
 import { ContactData } from "@/data/contactUsData";
 import LoadingSpinner from "@/components/common/Spinner";
 import { AboutData } from "@/data/AboutData";
+import PageLoader from "@/components/common/PageLoader";
 
 // Map each category to its data source
 
@@ -24,8 +25,6 @@ const categoryDataMap: Record<string, any[]> = {
 };
 
 const CategoryPage = () => {
-
-  const [loading, setLoading] = useState(true);
   const params = useParams();
   const category = params?.category as string;
 
@@ -37,30 +36,15 @@ const CategoryPage = () => {
     return <p>Page not found</p>;
   }
 
-  useEffect(() => {
-    const handlePageLoad = () => {
-      setLoading(false);
-    };
-    // If the document is already loaded, update immediately
-    if (document.readyState === "complete") {
-      handlePageLoad();
-    } else {
-      window.addEventListener("load", handlePageLoad);
-      return () => window.removeEventListener("load", handlePageLoad);
-    }
-  }, []);
-
-  if (loading) {
-    return <LoadingSpinner />;
-  }
-
   return (
-    <LandingPage
-      category={category}
-      data={data}
-      renderCard={layout.renderCard}
-      containerClass={layout.containerClass}
-    />
+    <PageLoader>
+      <LandingPage
+        category={category}
+        data={data}
+        renderCard={layout.renderCard}
+        containerClass={layout.containerClass}
+      />
+    </PageLoader>
   );
 };
 

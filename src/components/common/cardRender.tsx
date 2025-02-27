@@ -31,7 +31,7 @@ const Card: React.FC<CardProps> = ({
   return (
     <div key={id} className={`${category || type}-card`}>
       <div className={`${category || type}-image`}>
-        <img src={img} alt={title} />
+        <img  loading="lazy" src={img} alt={title} />
         {(category === "services" ||
           category === "projects" ||
           type === "services" ||
