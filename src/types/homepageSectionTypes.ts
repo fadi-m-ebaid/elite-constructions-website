@@ -29,4 +29,7 @@ export interface HomepageSectionDataType extends BaseType{
   sectionDetailRelatedId?: ServiceType["id"] | ProjectType["id"];
   hoverZones?: HoverZoneDataType[];
   poster?: string;
+  mobBackgroundWebm?: string;
+  mobBackgroundMp4?: string;
+  mobPoster?: string;
 }

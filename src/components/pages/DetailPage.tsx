@@ -130,10 +130,10 @@ const DetailPage = <T,>({
           className={`${category}-info-details-container row`}
           data-aos="fade-in"
         >
-          <div className={`${category}-info-img col-md-6`}>
+          <div className={`${category}-info-img col-md-5`}>
             <img loading="lazy" src={(data as any).img2}></img>
           </div>
-          <div className={`${category}-info-data container col-md-6`}>
+          <div className={`${category}-info-data container col-md-5`}>
             <div className="row">
               {Object.entries((data as any).serviceActionList).map(
                 ([label, value]) => (
