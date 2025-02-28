@@ -1,4 +1,4 @@
-import React, { useEffect} from "react";
+import React, { useEffect } from "react";
 import PagesFooter from "./pagesFooter";
 import Card from "../common/cardRender";
 import Link from "next/link";
@@ -19,10 +19,9 @@ const DetailPage = <T,>({
   categoryData,
   detailContainerClass,
 }: DetailPageProps<T>) => {
-
   useEffect(() => {
     AOS.init({ duration: 1000 });
-    }, []);
+  }, []);
 
   const filteredItems = categoryData?.filter(
     (item) => (data as any).id !== (item as any).id
@@ -41,8 +40,12 @@ const DetailPage = <T,>({
             backgroundPosition: "center",
           }}
         >
-          <img loading="lazy" className="details-logo" src="/assets/logo-light-300x300.png"/>
-          <h1  className="details-header-title col-md-8">
+          <img
+            loading="lazy"
+            className="details-logo"
+            src="/assets/logo-light-300x300.png"
+          />
+          <h1 className="details-header-title col-md-8">
             {(data as any).title.charAt(0).toUpperCase() +
               (data as any).title.slice(1)}
           </h1>
@@ -63,7 +66,8 @@ const DetailPage = <T,>({
             <div className="community-header-meta">
               {/* Author Info */}
               <div className="community-meta-item community-author">
-                <img loading="lazy"
+                <img
+                  loading="lazy"
                   src={(data as any).author.img || "/assets/default-user.png"}
                   alt={(data as any).author.name}
                   className="community-author-img"
@@ -122,7 +126,10 @@ const DetailPage = <T,>({
         </div>
       )}
       {category === "services" && (
-        <div className={`${category}-info-details-container row`} data-aos="fade-in">
+        <div
+          className={`${category}-info-details-container row`}
+          data-aos="fade-in"
+        >
           <div className={`${category}-info-img col-md-6`}>
             <img loading="lazy" src={(data as any).img2}></img>
           </div>
@@ -146,16 +153,24 @@ const DetailPage = <T,>({
           </div>
         </div>
       )}
-       {(category === "services" && (data as any).pdfUrl) && (
+      {category === "services" && (data as any).pdfUrl && (
         <div className="pdf">
-          <Link className="pdf-link" href={(data as any).pdfUrl}>Download PDF</Link>
+          <a
+            className="pdf-link"
+            href={(data as any).pdfUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Download PDF
+          </a>
         </div>
       )}
-      <div data-aos="fade-in">
-      {renderDetail(data)}
-      </div>
+      <div data-aos="fade-in">{renderDetail(data)}</div>
       {category === "projects" && (
-        <div className={`${category}-info-details-container row`} data-aos="fade-in">
+        <div
+          className={`${category}-info-details-container row`}
+          data-aos="fade-in"
+        >
           <div className={`${category}-info-title col-md-2`}>
             <h1>
               {category?.charAt(0).toUpperCase() + category.slice(1, -1)}{" "}
