@@ -8,6 +8,7 @@ config.autoAddCss = false; // Prevents FontAwesome from adding duplicate styles
 import "bootstrap/dist/css/bootstrap.min.css";
 import "leaflet/dist/leaflet.css";
 import "aos/dist/aos.css";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata = {
   title: "Elite Constructions",
