@@ -52,11 +52,6 @@ const AboutPage = () => {
       </div>
 
       <div className="about-section" data-aos="fade-up">
-        <img loading="lazy"
-          src="/about/about-page-2.jpg"
-          alt="Handshake between engineers"
-          className="about-image"
-        />
         <div className="about-text-content">
           <h2>The Standards</h2>
           <p>
@@ -68,6 +63,11 @@ const AboutPage = () => {
             completed on schedule and under budget.
           </p>
         </div>
+        <img loading="lazy"
+          src="/about/about-page-2.jpg"
+          alt="Handshake between engineers"
+          className="about-image"
+        />
       </div>
 
       <div className="about-section" data-aos="fade-up">
@@ -92,8 +92,8 @@ const AboutPage = () => {
       </div>
 
       {/* New Section: Inspiration, Innovation, and Opportunities */}
-      <div className="inspiration-section" data-aos="fade-up">
-        <div className="inspiration-content">
+      <div className="inspiration-section row" data-aos="fade-up">
+        <div className="inspiration-content col-md">
           <h2>Inspiration, Innovation, And Opportunities.</h2>
           <p>
             Take advantage of the experienced staff and endless opportunities to
@@ -152,7 +152,7 @@ const AboutPage = () => {
           </div>
         </div>
 
-        <div className="inspiration-image">
+        <div className="inspiration-image col-md">
           <img loading="lazy"
             src="/about/about-inspiration.jpg"
             alt="Engineers working on blueprints"

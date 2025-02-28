@@ -14,11 +14,11 @@ export default function PagesFooter() {
           construction partner or you’re looking to take the next step in your
           career, we want to hear from you.
         </p>
-        <div className="contacting-buttons">
-          <Link href={"/contact"}>
+        <div className="contacting-buttons row">
+          <Link href={"/contact"} className="col-lg-4">
             <Button className="request-service-btn">Request Service</Button>
           </Link>
-          <Link href={"/careers"}>
+          <Link href={"/careers"} className="col-lg-4">
             <Button className="join-team-btn">Join Our Team</Button>
           </Link>
         </div>
