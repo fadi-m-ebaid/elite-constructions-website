@@ -171,7 +171,7 @@ body {
   }
 
   .homepageSection-title {
-    font-size: 2.6vw;
+    font-size: 2.5vw;
     font-weight: 900;
     margin-bottom: 20px;
     border-left: 6px solid var(--primary-color);
@@ -183,7 +183,7 @@ body {
   }
 
   .homepageSection-content {
-    font-size: 1.3vw;
+    font-size: 1.4vw;
     font-weight: 400;
     transform: translateY(10px); /* Initially shifted down */
     opacity: 1;
@@ -459,7 +459,6 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
-
 }
 
 /* 🔹 Slider Wrapper */
@@ -636,7 +635,7 @@ body {
       color: var(--tertiary-color);
       font-size: 18px;
       font-weight: bold;
-      padding: 12px 25px;
+      ppadding: 12px 25px 12px 25px;
       border: none;
       border-radius: 30px;
       cursor: pointer;
@@ -702,26 +701,29 @@ body {
 
     .map {
       flex: 1;
-      border-radius: 40px;
+      border-radius: 30px;
       border: 3px solid var(--primary-color);
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 37vh;
-      width: 30vh;
+      height: 40vh;
+      width: 100%; /* Ensure full responsiveness */
+      max-width: 600px; /* Adjust for reasonable scaling */
+      overflow: hidden; /* Prevent map from overflowing rounded borders */
     }
 
     .map-wrapper {
       width: 100%;
       height: 100%;
-      border-radius: 40px;
+      border-radius: 30px !important;
+      overflow: hidden; /* Ensures map doesn't spill out of the wrapper */
     }
 
     .leaflet-map {
       height: 100% !important;
       width: 100% !important;
       z-index: 2;
-      border-radius: 40px;
+      border-radius: 30px !important;
     }
 
     .legal-links {
@@ -751,6 +753,42 @@ body {
     align-items: center;
   }
 }
+@media (max-width: 992px) {
+  /* Apply for screens smaller than large (lg) */
+  .info-section {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center align */
+    gap: 30px !important; /* Add spacing between sections */
+    width: 100%; /* Ensure full width */
+  }
+
+  .map {
+    order: 1; /* Ensure the map appears after navigators */
+    width: 100% !important; /* Take full width */
+    max-width: 100% !important; /* Prevent unexpected shrinking */
+    height: 40vh !important; /* Set explicit height */
+    min-height: 300px; /* Prevent map from disappearing */
+    display: flex !important; /* Ensure it remains visible */
+    justify-content: center;
+    align-items: center;
+    overflow: hidden !important; /* Prevent any hidden rendering */
+  }
+
+  .map-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex !important; /* Prevent flexbox collapsing */
+  }
+
+  .leaflet-map {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 300px !important; /* Prevent disappearing */
+    display: block !important; /* Ensure visibility */
+  }
+}
+
 /* ---------------------------------------------------------------------------------------------------------------------------- */
 /* .details-header {
   min-height: 100vh;
@@ -952,7 +990,7 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 items per row */
   gap: 40px;
-  padding: 40px 100px 40px 100px;
+  padding: 40px 50px 40px 50px;
   text-align: center;
   justify-content: center;
   align-items: center;
@@ -1123,19 +1161,19 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%; /* ✅ Full width */
-  max-width: 1770px; /* ✅ Set a max width */
-  height: 50vh; /* ✅ Adjust height (optional, can be auto) */
+  width: 95vh;
+  max-width: 90vw;
+  height: auto;
   border: 5px solid var(--primary-color);
   border-radius: 18px;
   overflow: hidden;
 }
 
-/* 🔹 Fix the image display */
+/* 🔹 Image Display (Fully Responsive) */
 .project-detail-slider-image {
-  width: 45vw;
+  width: 100%;
   height: 100%;
-  object-fit: cover; /* ✅ Ensures image fills the box */
+  object-fit: cover; /* ✅ Ensures image fills container without distortion */
   transition: transform 0.8s ease-in-out;
 }
 
@@ -1207,7 +1245,7 @@ a {
 .services-items-list-title h1 {
   padding-left: 5px;
   border-left: 4px solid var(--primary-color);
-  font-size: 3.8rem;
+  font-size: 3.5em;
   font-weight: 600;
   color: var(--primary-color);
 }
@@ -1423,7 +1461,8 @@ a {
 
 .community-article-detail {
   padding: 50px;
-  max-width: 65vw;
+  width: 80vw;
+  max-width: 90vw;
   .community-article-content {
     h3,
     h2 {
@@ -1462,6 +1501,16 @@ a {
       }
     }
   }
+}
+@media screen and (max-width: 768px) {
+  .community-article-detail {
+    padding: 20px;
+    width: 90vw;
+    .article-tags {
+      max-width: 90vw;
+    }
+  }
+  
 }
 
 /* Careers */
@@ -1720,43 +1769,50 @@ textarea {
 .about-section {
   display: flex;
   justify-content: space-between;
-  align-items: center; /* Align text and images */
-  gap: 40px; /* More spacing for clarity */
-  width: 100%; /* Ensure full-width usage */
+  align-items: center;
+  gap: 40px;
+  width: 100%;
 }
 
+/* First section (image on the right) and all odd-numbered sections */
+.about-section:nth-child(odd) {
+  flex-direction: row; /* Default layout: text left, image right */
+}
+
+/* Second section (image on the left) and all even-numbered sections */
 .about-section:nth-child(even) {
-  flex-direction: row-reverse; /* Alternate layout */
+  flex-direction: row-reverse; /* Reverse layout: text right, image left */
 }
 
 /* Text content */
 .about-text-content {
-  flex: 1; /* Allow text to take available space */
+  flex: 1;
   max-width: 50%;
 }
 
 /* Text styling */
 .about-text-content h2 {
-  font-size: 28px; /* Slightly larger */
+  font-size: 28px;
   font-weight: bold;
-  color: #333; /* Darker for better readability */
+  color: #333;
 }
 
 .about-text-content p {
-  font-size: 18px; /* Larger text */
+  font-size: 18px;
   line-height: 1.6;
-  color: #555; /* Adjusted color */
+  color: #555;
 }
 
 /* Image styling */
 .about-image {
-  flex: 1; /* Allow image to fill space */
+  flex: 1;
   max-width: 50%;
-  height: auto; /* Maintain aspect ratio */
-  object-fit: cover; /* Ensure images cover their area */
-  border-radius: 12px; /* Smooth edges */
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
+
 
 .inspiration-section {
   display: flex;
@@ -1820,14 +1876,14 @@ textarea {
   font-size: 1rem;
 }
 
-.about-consultants-slider-container{
+.about-consultants-slider-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  h2{
+  h2 {
     color: var(--primary-color);
-    font-size: 3vw;
+    font-size: 2.5rem;
     font-weight: 800;
   }
 }
@@ -1846,12 +1902,13 @@ textarea {
 }
 
 /* 🎡 Full-Width About Page Slider */
-.aboutPage-slider {
+/* .aboutPage-slider {
   width: 100%;
   overflow: hidden;
   position: relative;
   padding: 20px 0;
-}
+} */
+
 
 /* 🎠 Continuous Scrolling Track */
 .aboutPage-slider-track {
@@ -2168,16 +2225,15 @@ textarea {
     padding: 60px !important;
     display: flex; /* Ensures gap works */
     justify-content: center; /* Align items in the center */
-    align-items: center; /* Align items vertically */
     gap: 5vw; /* Adjust gap size for better spacing */
     margin: auto !important;
 
     .request-service-btn {
       background-color: var(--primary-color);
-      font-size: 1.8rem;
+      font-size: 1.8em;
       color: var(--tertiary-color);
       font-weight: 550;
-      padding: 12px 25px;
+      padding: 12px 25px 12px 25px;
       border: none;
       border-radius: 60px;
       cursor: pointer;
@@ -2195,10 +2251,10 @@ textarea {
 
     .join-team-btn {
       background-color: var(--secondary-color);
-      font-size: 1.8rem;
+      font-size: 1.8em;
       color: var(--tertiary-color);
       font-weight: 550;
-      padding: 12px 25px;
+      padding: 12px 25px 12px 25px;
       border: none;
       border-radius: 60px;
       cursor: pointer;
@@ -2255,8 +2311,6 @@ textarea {
 
 /* ---------------------------------------------------------------------------------------------------- */
 
-
-
 /* 🚀 Keep loader visible until content is actually rendered */
 .loader-container {
   position: fixed;
@@ -2289,7 +2343,8 @@ textarea {
 /* 🟢 Responsive Adjustments */
 @media (max-width: 1024px) {
   .projects-container,
-  .services-container {
+  .services-container,
+  .community-container {
     grid-template-columns: repeat(2, 1fr); /* 2 items per row for tablets */
   }
   .carousel-arrow {
@@ -2299,7 +2354,8 @@ textarea {
 
 @media (max-width: 768px) {
   .projects-container,
-  .services-container {
+  .services-container,
+  .community-container {
     grid-template-columns: 1fr; /* 1 item per row for mobile */
   }
   .carousel-arrow {
