@@ -30,6 +30,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <NavbarComponenet />
         <main>{children}</main>
         <Footer />
+        <SpeedInsights />
       </body>
     </html>
   );
