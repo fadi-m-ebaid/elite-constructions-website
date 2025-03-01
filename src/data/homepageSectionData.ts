@@ -53,7 +53,7 @@ export const hoverZonesData: HomepageHoverDataType[] = [
   },
   {
     id: "light-systems",
-    onHoverTitle: "/homepage-popups-2/Light.webp",
+    onHoverTitle: "/homepage-popups-2/light.webp",
     title: "Light Systems",
     content:
       "Adding the right lighting can transform your space, and here at Elite, we handle all aspects of lighting, from design and selection to installation.",
