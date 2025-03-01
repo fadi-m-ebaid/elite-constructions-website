@@ -132,6 +132,8 @@ export const homepageSectionData: HomepageSectionDataType[] = [
     backgroundWebm: "/BGs/about.webm",
     backgroundMp4: "/BGs/about.mp4",
     poster: "/BGs/posters/about.jpg",
+    mobBackgroundWebm: "/BGs/about-mob.webm",
+    mobPoster: "/BGs/posters/about-mob.jpg",
     layout: "centered",
     type: "about",
   },
@@ -142,6 +144,8 @@ export const homepageSectionData: HomepageSectionDataType[] = [
     backgroundWebm: "/BGs/maintainance.webm",
     backgroundMp4: "/BGs/maintainance.mp4",
     poster: "/BGs/posters/maintainance.jpg",
+    mobBackgroundWebm: "/BGs/maintainance-mob.webm",
+    mobPoster: "/BGs/posters/maintainance-mob.jpg",
     layout: "right-aligned",
     sectionDetailRelatedId: "service-1",
     type: "services",
@@ -155,6 +159,12 @@ export const homepageSectionData: HomepageSectionDataType[] = [
           width: "15%",
           height: "25%",
         },
+        mobPosition: {
+          top: "68%",
+          left: "60%",
+          width: "18%",
+          height: "15%",
+        }
       },
       {
         id: "garbage-chute",
@@ -165,6 +175,12 @@ export const homepageSectionData: HomepageSectionDataType[] = [
           width: "10%",
           height: "20%",
         },
+        mobPosition:{
+          top: "70%",
+          left: "101%",
+          width: "15%",
+          height: "13%",
+        }
       },
       {
         id: "ventilation-system",
@@ -175,6 +191,12 @@ export const homepageSectionData: HomepageSectionDataType[] = [
           width: "15%",
           height: "15%",
         },
+        mobPosition: {
+          top: "73%",
+          left: "28%",
+          width: "15%",
+          height: "11%",
+        }
       },
       {
         id: "bmu-worker",
@@ -185,6 +207,12 @@ export const homepageSectionData: HomepageSectionDataType[] = [
           width: "30%",
           height: "50%",
         },
+        mobPosition: {
+          top: "95%",
+          left: "55%",
+          width: "40%",
+          height: "30%",
+        }
       },
     ],
   },
@@ -196,6 +224,8 @@ export const homepageSectionData: HomepageSectionDataType[] = [
     backgroundWebm: "/BGs/garbage.webm",
     backgroundMp4: "/BGs/garbage.mp4",
     poster: "/BGs/posters/garbage.jpg",
+    mobBackgroundWebm: "/BGs/garbage-mob.webm",
+    mobPoster: "/BGs/posters/garbage-mob.jpg",
     type: "services",
     sectionDetailRelatedId: "service-2",
     layout: "left-aligned",
@@ -209,6 +239,12 @@ export const homepageSectionData: HomepageSectionDataType[] = [
           width: "12%",
           height: "30%",
         },
+        mobPosition:{
+          top: "68%", // Positioning based on the garbage chute location
+          left: "72%",
+          width: "15%",
+          height: "15%",
+        }
       },
       {
         id: "catering-services",
@@ -219,6 +255,12 @@ export const homepageSectionData: HomepageSectionDataType[] = [
           width: "15%",
           height: "15%",
         },
+        mobPosition: {
+          top: "80%", // Positioning near the kitchen counter
+          left: "43%",
+          width: "18%",
+          height: "15%",
+        }
       },
     ],
   },
@@ -229,6 +271,8 @@ export const homepageSectionData: HomepageSectionDataType[] = [
     backgroundWebm: "/BGs/HVAC.webm",
     backgroundMp4: "/BGs/HVAC.mp4",
     poster: "/BGs/posters/HVAC.jpg",
+    mobBackgroundWebm: "/BGs/HVAC-mob.webm",
+    mobPoster: "/BGs/posters/HVAC-mob.jpg",
     type: "services",
     sectionDetailRelatedId: "service-2",
     layout: "right-aligned",
@@ -242,6 +286,12 @@ export const homepageSectionData: HomepageSectionDataType[] = [
           width: "14%",
           height: "15%",
         },
+        mobPosition: {
+          top: "-10%", // Positioned near the AC unit
+          left: "30%",
+          width: "30%",
+          height: "10%",
+        }
       },
       {
         id: "fire-safety",
@@ -252,6 +302,12 @@ export const homepageSectionData: HomepageSectionDataType[] = [
           width: "15%",
           height: "10%",
         },
+        mobPosition:{
+          top: "-12%", // Positioned near the fire safety system
+          left: "88%",
+          width: "15%",
+          height: "10%",
+        }
       },
       {
         id: "furnishing",
@@ -262,6 +318,12 @@ export const homepageSectionData: HomepageSectionDataType[] = [
           width: "20%",
           height: "15%",
         },
+        mobPosition:{
+          top: "20%", // Positioned near the office chair
+          left: "80%",
+          width: "20%",
+          height: "15%",
+        }
       },
     ],
   },
@@ -272,6 +334,8 @@ export const homepageSectionData: HomepageSectionDataType[] = [
     backgroundWebm: "/BGs/lighting.webm",
     backgroundMp4: "/BGs/lighting.mp4",
     poster: "/BGs/posters/lighting.jpg",
+    mobBackgroundWebm: "/BGs/lighting-mob.webm",
+    mobPoster: "/BGs/posters/lighting-mob.jpg",
     sectionDetailRelatedId: "service-3",
     layout: "left-aligned",
     type: "services",
@@ -285,6 +349,12 @@ export const homepageSectionData: HomepageSectionDataType[] = [
           width: "15%",
           height: "15%",
         },
+        mobPosition:{
+          top: "25%", // Positioned near the lighting board indoors
+          left: "55%",
+          width: "18%",
+          height: "12%",
+        }
       },
       {
         id: "led-systems",
@@ -295,6 +365,12 @@ export const homepageSectionData: HomepageSectionDataType[] = [
           width: "25%",
           height: "25%",
         },
+        mobPosition:{
+          top: "52%", // Positioned near the billboard lighting
+          left: "115%",
+          width: "30%",
+          height: "13%",
+        }
       },
       {
         id: "interior-finishing",
@@ -305,6 +381,12 @@ export const homepageSectionData: HomepageSectionDataType[] = [
           width: "10%",
           height: "10%",
         },
+        mobPosition:{
+          top: "72%", // Positioned near the painter
+          left: "30%",
+          width: "10%",
+          height: "10%",
+        }
       },
       {
         id: "fitout-projects",
@@ -315,6 +397,12 @@ export const homepageSectionData: HomepageSectionDataType[] = [
           width: "10%",
           height: "10%",
         },
+        mobPosition:{
+          top: "72%", // Positioned near the screen
+          left: "52%",
+          width: "20%",
+          height: "6%",
+        }
       },
       {
         id: "exterior-finishing",
@@ -325,6 +413,12 @@ export const homepageSectionData: HomepageSectionDataType[] = [
           width: "15%",
           height: "10%",
         },
+        mobPosition:{
+          top: "76%", // Positioned near the workers handling exterior finishing
+          left: "92%",
+          width: "22%",
+          height: "8%",
+        }
       },
     ],
   },
@@ -335,19 +429,27 @@ export const homepageSectionData: HomepageSectionDataType[] = [
     backgroundWebm: "/BGs/steel-1.webm",
     backgroundMp4: "/BGs/steel-1.mp4",
     poster: "/BGs/posters/steel-1.jpg",
+    mobBackgroundWebm: "/BGs/steel-1-mob.webm",
+    mobPoster: "/BGs/posters/steel-1-mob.jpg",
     type: "projects",
     sectionDetailRelatedId: "project-1",
     layout: "right-aligned",
     hoverZones: [
       {
-        id: "hospitality",
-        zoneDataId: "hospitality",
+        id: "steelWork",
+        zoneDataId: "steelWork",
         position: {
-          top: "90%", // Positioned near the crane hook lifting steel
+          top: "10%", // Positioned near the crane hook lifting steel
           left: "68%",
           width: "25%",
           height: "25%",
         },
+        mobPosition: {
+          top: "22%", // Positioned near the crane hook lifting steel
+          left: "58%",
+          width: "28%",
+          height: "38%",
+        }
       },
       {
         id: "construction",
@@ -358,16 +460,28 @@ export const homepageSectionData: HomepageSectionDataType[] = [
           width: "25%",
           height: "25%",
         },
+        mobPosition: {
+          top: "15%", // Positioned near the crane hook lifting steel
+          left: "1%",
+          width: "28%",
+          height: "25%",
+        }
       },
       {
-        id: "steelWork",
-        zoneDataId: "steelWork",
+        id: "hospitality",
+        zoneDataId: "hospitality",
         position: {
-          top: "10%", // Positioned near the crane hook lifting steel
+          top: "90%", // Positioned near the crane hook lifting steel
           left: "68%",
           width: "25%",
           height: "25%",
         },
+        mobPosition: {
+          top: "72%", // Positioned near the crane hook lifting steel
+          left: "56%",
+          width: "28%",
+          height: "20%",
+        }
       },
     ],
   },
@@ -378,6 +492,8 @@ export const homepageSectionData: HomepageSectionDataType[] = [
     backgroundWebm: "/BGs/steel-2.webm",
     backgroundMp4: "/BGs/steel-2.mp4",
     poster: "/BGs/posters/steel-2.jpg",
+    mobBackgroundWebm: "/BGs/steel-2-mob.webm",
+    mobPoster: "/BGs/posters/steel-2-mob.jpg",
     layout: "left-aligned",
     type: "services",
     hoverZones: [
@@ -390,6 +506,12 @@ export const homepageSectionData: HomepageSectionDataType[] = [
           width: "30%",
           height: "30%",
         },
+        mobPosition: {
+          top: "20%", // Positioned near the crane hook lifting steel
+          left: "50%",
+          width: "30%",
+          height: "15%",
+        }
       },
       {
         id: "pneumatic",
@@ -400,6 +522,12 @@ export const homepageSectionData: HomepageSectionDataType[] = [
           width: "18%",
           height: "20%",
         },
+        mobPosition: {
+          top: "87%", // Positioned near the crane hook lifting steel
+          left: "0%",
+          width: "33%",
+          height: "10%",
+        }
       },
     ],
   },
@@ -410,6 +538,8 @@ export const homepageSectionData: HomepageSectionDataType[] = [
     backgroundWebm: "/BGs/steel-3.webm",
     backgroundMp4: "/BGs/steel-3.mp4",
     poster: "/BGs/posters/steel-3.jpg",
+    mobBackgroundWebm: "/BGs/steel-3-mob.webm",
+    mobPoster: "/BGs/posters/steel-3-mob.jpg",
     layout: "centered",
     type: "services",
     hoverZones: [
@@ -422,6 +552,12 @@ export const homepageSectionData: HomepageSectionDataType[] = [
           width: "10%",
           height: "15%",
         },
+        mobPosition: {
+          top: "-20%", // Positioned near the crane hook lifting steel
+          left: "50%",
+          width: "15%",
+          height: "10%",
+        }
       },
     ],
   },

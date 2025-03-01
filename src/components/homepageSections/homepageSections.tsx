@@ -9,6 +9,12 @@ import { hoverZonesData } from "@/data/homepageSectionData";
 import Link from "next/link";
 import AOS from "aos";
 import LazyVideo from "../common/video";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faMedal,
+  faUsersGear,
+  faBullseye,
+} from "@fortawesome/free-solid-svg-icons";
 
 interface HomepageSectionProps {
   section: HomepageSectionDataType;
@@ -77,7 +83,6 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-
   const videoKey = isMobile ? "mobile" : "desktop";
 
   return (
@@ -88,7 +93,7 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
         className="background-video"
         poster={isMobile ? mobPoster : poster}
         srcWebm={isMobile ? mobBackgroundWebm : backgroundWebm}
-        srcMp4={isMobile ? mobBackgroundMp4 : backgroundMp4}
+        // srcMp4={isMobile ? mobBackgroundMp4 : backgroundMp4}
       />
 
       {/* ✅ Render Hover Zones with Videos */}
@@ -97,12 +102,21 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
           <div
             key={zone.id}
             className="hoverZone"
-            style={{
-              top: zone.position.top,
-              left: zone.position.left,
-              width: zone.position.width,
-              height: zone.position.height,
-            }}
+            style={
+              isMobile
+                ? {
+                    top: zone.mobPosition?.top,
+                    left: zone.mobPosition?.left,
+                    width: zone.mobPosition?.width,
+                    height: zone.mobPosition?.height,
+                  }
+                : {
+                    top: zone.position.top,
+                    left: zone.position.left,
+                    width: zone.position.width,
+                    height: zone.position.height,
+                  }
+            }
             onMouseEnter={() => handleMouseEnter(zone.zoneDataId)}
             onMouseLeave={handleMouseLeave}
           >
@@ -119,12 +133,6 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
                   loading="lazy"
                   className="hover-video"
                   src={hoveredZone.onHoverTitle}
-                  // autoPlay
-                  // muted
-                  // loop
-                  // playsInline
-                  // preload="auto"
-                  // onCanPlayThrough={(e) => (e.currentTarget.style.opacity = "1")}
                 />
               )}
           </div>
@@ -132,7 +140,7 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
       </div>
 
       {/* Section Content */}
-      <div className={`container ${fade ? "fade" : ""}`}>
+      <div className={`${id} container ${fade ? "fade" : ""}`}>
         <div className="content-container" data-aos="fade-up">
           <h2 className="homepageSection-title">{displayData.title}</h2>
           <p className="homepageSection-content">{displayData.content}</p>
@@ -140,6 +148,25 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
             Read More <span className="arrow-icon">➝</span>
           </Link>
         </div>
+        {id === "infrastructure" && isMobile && (
+          <div className="our-values">
+            <h2 className="values-title">Our Values</h2>
+            <div className="values-icons flex gb-2">
+              <div>
+                <FontAwesomeIcon icon={faMedal} className="valueIcon" />
+                <p>Quality</p>
+              </div>
+              <div>
+                <FontAwesomeIcon icon={faUsersGear} className="valueIcon" />
+                <p>Integrity</p>
+              </div>
+              <div>
+                <FontAwesomeIcon icon={faBullseye}  className="valueIcon"/>
+                <p>Efficiency</p>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

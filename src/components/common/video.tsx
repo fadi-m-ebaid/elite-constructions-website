@@ -151,7 +151,7 @@ const LazyVideo: React.FC<LazyVideoProps> = ({
       poster={videoPoster}
     >
       {videoSrcWebm && <source src={videoSrcWebm} type="video/webm" />}
-      {videoSrcMp4 && <source src={videoSrcMp4} type="video/mp4" />}
+      {/* {videoSrcMp4 && <source src={videoSrcMp4} type="video/mp4" />} */}
       Your browser does not support the video tag.
     </video>
   );
