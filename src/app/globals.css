@@ -141,7 +141,7 @@ body {
   &.centered .container {
     position: absolute;
     left: 50%;
-    top: 75%;
+    top: 75vh;
     transform: translate(-50%, -50%);
     max-width: 60vw;
     max-height: 50%;
@@ -171,7 +171,7 @@ body {
   }
 
   .homepageSection-title {
-    font-size: 2.5vw;
+    font-size: 2.4vw;
     font-weight: 900;
     margin-bottom: 20px;
     border-left: 0.5vw solid var(--primary-color);
@@ -183,12 +183,13 @@ body {
   }
 
   .homepageSection-content {
-    font-size: 1.4vw;
+    font-size: 1.3vw;
     font-weight: 400;
     transform: translateY(10px); /* Initially shifted down */
     opacity: 1;
     transform: translateY(0);
     color: #333;
+    margin-bottom: 5px;
   }
 
   .homepageSection-title,
@@ -268,7 +269,7 @@ body {
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 600px) {
   .background-video {
     object-fit: cover;
     height: 100.1vh !important;
