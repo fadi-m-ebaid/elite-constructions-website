@@ -80,7 +80,7 @@ const LazyVideo: React.FC<LazyVideoProps> = ({
       className={`${className} ${isVisible ? "loaded" : "loading"}`}
       muted={muted}
       loop={loop}
-      playsInline
+      playsInline={playsInline}
       {...{ "webkit-playsinline": "true" }}
       autoPlay={isVisible && autoPlay}
       preload="auto"
@@ -88,10 +88,11 @@ const LazyVideo: React.FC<LazyVideoProps> = ({
     >
       {videoSrcMp4 && <source src={videoSrcMp4} type="video/mp4" />}
       {videoSrcWebm && <source src={videoSrcWebm} type="video/webm" />}
-      {videoSrcWebp && <source src={videoSrcWebp} type="video/webp" />}
+      {/* {videoSrcWebp && <source src={videoSrcWebp} type="video/webp" />} */}
       Your browser does not support the video tag.
     </video>
   );
 };
 
 export default LazyVideo;
+

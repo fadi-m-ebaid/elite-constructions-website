@@ -123,14 +123,14 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
             {/* ✅ Target Animation (Lazy Loaded) */}
             <LazyVideo
               className="target-animation"
-              srcWebm="/homepage-popups-2/Target_transparent.mp4"
+              srcWebm="/homepage-popups-2/Target_transparent.webm"
             />
 
             {/* ✅ Hovered video inside the zone (Lazy Loaded) */}
             {hoveredZone?.id === zone.zoneDataId &&
               hoveredZone.onHoverTitle && (
                 <img
-                  loading="lazy"
+                  // loading="lazy"
                   className="hover-video"
                   src={hoveredZone.onHoverTitle}
                 />
