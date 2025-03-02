@@ -81,6 +81,7 @@ const LazyVideo: React.FC<LazyVideoProps> = ({
       muted={muted}
       loop={loop}
       playsInline={playsInline}
+      {...{ "webkit-playsinline": "true" }}
       autoPlay={isVisible && autoPlay}
       preload="auto"
       poster={videoPoster}
