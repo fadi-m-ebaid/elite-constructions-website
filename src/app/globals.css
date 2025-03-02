@@ -246,14 +246,15 @@ body {
   /* Small, Fixed Target Animation */
   .target-animation {
     position: absolute;
-    width: 40px;
-    height: 40px;
-    opacity: 0.9;
+    width: 35px;
+    height: 35px;
+    opacity: 0.8;
     pointer-events: none;
     /* transform: translate(-50%, -50%); */
     border: 3px double var(--primary-color);
     border-radius: 50%;
   }
+  
 
   /* Ensures video remains exactly at the center of the hover zone */
   .hover-video {

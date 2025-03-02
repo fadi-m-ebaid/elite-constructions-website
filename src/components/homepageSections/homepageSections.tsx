@@ -123,7 +123,7 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
             {/* ✅ Target Animation (Lazy Loaded) */}
             <LazyVideo
               className="target-animation"
-              srcWebm="/homepage-popups-2/Target_transparent.webm"
+              srcWebm="/homepage-popups-2/Target_transparent.mp4"
             />
 
             {/* ✅ Hovered video inside the zone (Lazy Loaded) */}
