@@ -29,7 +29,7 @@ export interface HoverZoneDataType extends BaseType {
 export interface HomepageSectionDataType extends BaseType {
   title: string;
   content: string;
-  backgroundWebm: string;
+  backgroundWebm?: string;
   backgroundMp4?: string;
   layout: "centered" | "left-aligned" | "right-aligned";
   sectionDetailRelatedId?: ServiceType["id"] | ProjectType["id"];
