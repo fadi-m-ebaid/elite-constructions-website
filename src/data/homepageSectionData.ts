@@ -133,7 +133,7 @@ export const homepageSectionData: HomepageSectionDataType[] = [
     backgroundMp4: "/BGs/about.mp4",
     poster: "/BGs/posters/about.jpg",
     mobBackgroundWebm: "/BGs/about-mob.webm",
-    mobBackgroundMp4: "/BGs/about-mob_noaudio.mp4",
+    mobBackgroundMp4: "/BGs/about-mob_converted-high.mp4",
     mobPoster: "/BGs/posters/about-mob.jpg",
     layout: "centered",
     type: "about",
