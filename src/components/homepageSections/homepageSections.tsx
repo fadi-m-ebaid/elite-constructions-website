@@ -92,8 +92,8 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
         key={videoKey}
         className="background-video"
         poster={isMobile ? mobPoster : poster}
-        srcWebm={isMobile ? mobBackgroundWebm : backgroundWebm}
-        // srcMp4={isMobile ? mobBackgroundMp4 : backgroundMp4}
+        // srcWebm={isMobile ? mobBackgroundWebm : backgroundWebm}
+        srcMp4={isMobile ? mobBackgroundMp4 : backgroundMp4}
       />
 
       {/* ✅ Render Hover Zones with Videos */}

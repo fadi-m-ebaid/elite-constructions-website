@@ -8,7 +8,8 @@ config.autoAddCss = false; // Prevents FontAwesome from adding duplicate styles
 import "bootstrap/dist/css/bootstrap.min.css";
 import "leaflet/dist/leaflet.css";
 import "aos/dist/aos.css";
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import VersionChecker from "@/components/VersionChecker";
 
 export const metadata = {
   title: "Elite Constructions",
@@ -27,6 +28,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body className="body">
+        <VersionChecker />
         <NavbarComponenet />
         <main>{children}</main>
         <Footer />

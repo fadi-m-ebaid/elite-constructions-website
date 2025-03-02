@@ -17,7 +17,7 @@ interface LandingPageProps<T> {
 const headerBackgrounds: { [key: string]: string } = {
   about: "/assets/about-us-header.jpeg",
   services: "/assets/about-us-header.jpeg",
-  community: "/community/community-header.webm",
+  community: "/community/community-header.mp4",
   careers: "/assets/careers-header.jpeg",
   contact: "/assets/contact-us-header.jpeg",
   projects: "/assets/projects-header.jpeg",

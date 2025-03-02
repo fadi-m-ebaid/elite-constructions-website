@@ -314,11 +314,13 @@ body {
     .our-values {
       margin-top: 25vh !important;
       text-align: center !important;
+      transition: transform 0.9s ease, box-shadow 0.3s ease;
 
       h2 {
         font-size: 1.5rem !important;
         font-weight: 700 !important;
         font-style: inherit !important;
+        color: var(--tertiary-color) !important;
       }
       .values-icons {
         display: flex !important;
@@ -330,9 +332,13 @@ body {
         margin-top: 20px;
       }
       .valueIcon{
-        box-shadow: 0 2px 3px rgb(226, 155, 103); /* Adds a soft shadow */
+        color: var(--primary-color);
+        font-size: 25px;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
+    }
+    .our-values:hover{
+      transform: scale(1.1);
     }
   }
 
@@ -2305,15 +2311,23 @@ textarea {
 .landingPage-slider-arrow-icon:hover {
   opacity: 0.7;
 }
+
 .category-image-2 {
-  overflow: hidden; /* ✅ Prevents image from spilling outside */
+  overflow: hidden; /* Prevents image from spilling outside */
+}
+.category-image-2 img {
+  width: 100%; /* Ensures image fits inside container */
+  height: 36vh; /* Sets height relative to viewport */
+  object-fit: cover; /* Maintains aspect ratio and crops when necessary */
+  transition: transform 0.8s ease-in-out; /* Smooth zoom effect */
+}
+/* Optional: Adjust height for mobile view */
+@media (max-width: 600px) {
+  .category-image-2 img {
+    height: auto; /* Let the image resize naturally on smaller screens */
+  }
 }
 
-.category-image-2 img {
-  width: 100%; /* ✅ Ensures image fits inside container */
-  height: 36vh;
-  transition: transform 0.8s ease-in-out; /* ✅ Smooth zoom effect */
-}
 
 .category-image-2 img:hover {
   transform: scale(1.1); /* ✅ Zooms the image */

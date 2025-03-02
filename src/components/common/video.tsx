@@ -1,80 +1,12 @@
-// import React, { useEffect, useRef, useState } from "react";
-
-// interface LazyVideoProps {
-//   srcMp4?: string;
-//   srcWebm?: string;
-//   mobSrcMp4? : string;
-//   mobSrcWebm? : string;
-//   className?: string;
-//   autoPlay?: boolean;
-//   loop?: boolean;
-//   muted?: boolean;
-//   playsInline?: boolean;
-//   poster?: string;
-//   mobPoster?: string;
-// }
-
-// const LazyVideo: React.FC<LazyVideoProps> = ({
-//   srcMp4,
-//   srcWebm,
-//   className = "",
-//   autoPlay = true,
-//   loop = true,
-//   muted = true,
-//   playsInline = true,
-//   poster = "",
-// }) => {
-//   const videoRef = useRef<HTMLVideoElement>(null);
-//   const [isVisible, setIsVisible] = useState(false);
-
-//   useEffect(() => {
-//     const observer = new IntersectionObserver(
-//       ([entry]) => {
-//         if (entry.isIntersecting) {
-//           setIsVisible(true);
-//           videoRef.current?.play();
-//         } else {
-//           setIsVisible(false);
-//           videoRef.current?.pause();
-//         }
-//       },
-//       { threshold: 0.5 }
-//     );
-
-//     if (videoRef.current) {
-//       observer.observe(videoRef.current);
-//     }
-
-//     return () => observer.disconnect();
-//   }, []);
-
-//   return (
-//     <video
-//       ref={videoRef}
-//       className={`${className} ${isVisible ? "loaded" : "loading"}`}
-//       muted={muted}
-//       loop={loop}
-//       playsInline={playsInline}
-//       autoPlay={isVisible}
-//       preload="auto"
-//       poster={poster}
-//     >
-//       {srcWebm && <source src={srcWebm} type="video/webm" />}
-//       {srcMp4 && <source src={srcMp4} type="video/mp4" />}
-//       Your browser does not support the video tag.
-//     </video>
-//   );
-// };
-
-// export default LazyVideo;
-
 import React, { useEffect, useRef, useState } from "react";
 
 interface LazyVideoProps {
   srcMp4?: string;
   srcWebm?: string;
+  srcWebp?: string;
   mobSrcMp4?: string;
   mobSrcWebm?: string;
+  mobSrcWebp?: string;
   className?: string;
   autoPlay?: boolean;
   loop?: boolean;
@@ -87,8 +19,10 @@ interface LazyVideoProps {
 const LazyVideo: React.FC<LazyVideoProps> = ({
   srcMp4,
   srcWebm,
+  srcWebp,
   mobSrcMp4,
   mobSrcWebm,
+  mobSrcWebp,
   className = "",
   autoPlay = true,
   loop = true,
@@ -113,7 +47,7 @@ const LazyVideo: React.FC<LazyVideoProps> = ({
           videoRef.current?.pause();
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.2 }
     );
 
     if (videoRef.current) {
@@ -137,6 +71,7 @@ const LazyVideo: React.FC<LazyVideoProps> = ({
   // Use mobile sources if on a mobile device and mobile props are provided
   const videoSrcWebm = isMobile && mobSrcWebm ? mobSrcWebm : srcWebm;
   const videoSrcMp4 = isMobile && mobSrcMp4 ? mobSrcMp4 : srcMp4;
+  const videoSrcWebp = isMobile && mobSrcWebp ? mobSrcWebp : srcWebp;
   const videoPoster = isMobile && mobPoster ? mobPoster : poster;
 
   return (
@@ -151,7 +86,8 @@ const LazyVideo: React.FC<LazyVideoProps> = ({
       poster={videoPoster}
     >
       {videoSrcWebm && <source src={videoSrcWebm} type="video/webm" />}
-      {/* {videoSrcMp4 && <source src={videoSrcMp4} type="video/mp4" />} */}
+      {videoSrcMp4 && <source src={videoSrcMp4} type="video/mp4" />}
+      {videoSrcWebp && <source src={videoSrcWebp} type="video/webp" />}
       Your browser does not support the video tag.
     </video>
   );
