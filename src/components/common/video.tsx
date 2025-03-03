@@ -1,5 +1,3 @@
-//
-
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
@@ -20,6 +18,7 @@ interface LazyVideoProps {
   mobPoster?: string;
   category?: string;
   onLoaded?: () => void; // Callback to signal when video is loaded
+  alwaysPlay?: boolean;  // New prop to always play the video
 }
 
 const LazyVideo: React.FC<LazyVideoProps> = ({
@@ -38,12 +37,18 @@ const LazyVideo: React.FC<LazyVideoProps> = ({
   mobPoster,
   category,
   onLoaded,
+  alwaysPlay = false,
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isMobile, setIsMobile] = useState(false);
 
-  // Use IntersectionObserver solely to control play/pause (with hysteresis)
+  // Use IntersectionObserver to control play/pause only when alwaysPlay is false.
   useEffect(() => {
+    if (alwaysPlay) {
+      videoRef.current?.play();
+      return; // Skip observer logic if always playing
+    }
+
     let pauseTimer: ReturnType<typeof setTimeout> | null = null;
     const thresholdValue = category === "community" ? 0.2 : 0.4;
 
@@ -75,7 +80,7 @@ const LazyVideo: React.FC<LazyVideoProps> = ({
       observer.disconnect();
       if (pauseTimer) clearTimeout(pauseTimer);
     };
-  }, [category]);
+  }, [category, alwaysPlay]);
 
   // Detect mobile screen
   useEffect(() => {
@@ -85,11 +90,10 @@ const LazyVideo: React.FC<LazyVideoProps> = ({
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Ensure video loads and fires callback when ready
   return (
     <video
       ref={videoRef}
-      className={`${className} loaded`} // Always "loaded" so it's visible
+      className={`${className} loaded`}
       muted={muted}
       loop={loop}
       playsInline={playsInline}
@@ -98,7 +102,7 @@ const LazyVideo: React.FC<LazyVideoProps> = ({
       preload="auto"
       poster={isMobile && mobPoster ? mobPoster : poster}
       style={{ backgroundColor: "#d3d3d3" }}
-      onLoadedData={onLoaded} // Signal to parent when loaded
+      onLoadedData={onLoaded}
     >
       {isMobile && mobSrcMp4 ? (
         <source src={mobSrcMp4} type="video/mp4" />
@@ -110,7 +114,6 @@ const LazyVideo: React.FC<LazyVideoProps> = ({
       ) : (
         srcWebm && <source src={srcWebm} type="video/webm" />
       )}
-      {/* Optional: include webp source if provided */}
       {srcWebp && <source src={srcWebp} type="video/webp" />}
       Your browser does not support the video tag.
     </video>
