@@ -39,27 +39,32 @@ const LazyVideo: React.FC<LazyVideoProps> = ({
   const [isVisible, setIsVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
-  // Lazy loading via IntersectionObserver with debounced callback
+  // Use IntersectionObserver with a delay on pausing (hysteresis)
   useEffect(() => {
-    let debounceTimer: ReturnType<typeof setTimeout> | null = null;
+    let pauseTimer: ReturnType<typeof setTimeout> | null = null;
     const thresholdValue = category === "community" ? 0.2 : 0.4;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        console.log("Intersection Ratio:", entry.intersectionRatio);
-        if (debounceTimer) clearTimeout(debounceTimer);
-        debounceTimer = setTimeout(() => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-            videoRef.current?.play();
-          } else {
+        if (entry.isIntersecting) {
+          // Cancel any pending pause
+          if (pauseTimer) {
+            clearTimeout(pauseTimer);
+            pauseTimer = null;
+          }
+          setIsVisible(true);
+          videoRef.current?.play();
+        } else {
+          // Delay pausing to avoid flickering on brief scrolls
+          pauseTimer = setTimeout(() => {
             setIsVisible(false);
             videoRef.current?.pause();
-          }
-        }, 100);
+          }, 500);
+        }
       },
       {
-        threshold:thresholdValue,
-        rootMargin: "0px 0px -10% 0px", // Adjust root margin if needed
+        threshold: thresholdValue,
+        rootMargin: "0px 0px -20% 0px",
       }
     );
 
@@ -69,9 +74,9 @@ const LazyVideo: React.FC<LazyVideoProps> = ({
 
     return () => {
       observer.disconnect();
-      if (debounceTimer) clearTimeout(debounceTimer);
+      if (pauseTimer) clearTimeout(pauseTimer);
     };
-  }, []);
+  }, [category]);
 
   // Detect mobile screen using window.innerWidth
   useEffect(() => {
@@ -113,6 +118,8 @@ const LazyVideo: React.FC<LazyVideoProps> = ({
       {...{ "webkit-playsinline": "true" }}
       autoPlay={isVisible && autoPlay}
       preload="auto"
+      // Removing the poster helps avoid flashes when the video pauses.
+      style={{ backgroundColor: "#000" }}
       // poster={videoPoster}
     >
       {videoSrcMp4 && <source src={videoSrcMp4} type="video/mp4" />}
