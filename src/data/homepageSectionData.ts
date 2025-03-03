@@ -24,6 +24,12 @@ export const hoverZonesData: HomepageHoverDataType[] = [
       "Our commitment to waste management extends to providing top-notch garbage chute solutions: We are the premier garbage chute provider, offering a diverse range that includes standard chutes and innovative smart solutions. We go beyond basic disposal and include monitoring, sorting capabilities, and seamless integration with Building Management Systems (BMS) and fire alarm systems. We deliver advanced solutions that enhance efficiency and contribute to a smarter waste management approach.",
   },
   {
+    "id": "waste-ventilation-system",
+    "onHoverTitle": "/homepage-popups-2/Exhusting-fans.webp",
+    "title": "Waste Ventilation Exhusting fans",
+    "content": "Introducing our innovative Waste Ventilation System – a perfect fusion of advanced garbage chute technology and high-performance exhausting fan systems. This breakthrough solution not only ensures efficient, smart waste disposal with integrated sorting and real-time monitoring, but also optimizes air quality by rapidly extracting odors and contaminants. Fully compatible with modern Building Management Systems (BMS) and fire alarm systems, our system delivers enhanced operational performance and safety, setting a new standard in sustainable facility management."
+  },
+  {
     id: "led-lighting",
     onHoverTitle: "/homepage-popups-2/LED.webp",
     title: "LED Lighting",
@@ -133,6 +139,7 @@ export const homepageSectionData: HomepageSectionDataType[] = [
     backgroundMp4: "/BGs/about.mp4",
     poster: "/BGs/posters/about.jpg",
     mobBackgroundWebm: "/BGs/about-mob.webm",
+    mobBackgroundMp4: "/BGs/about-done_reduced.mp4",
     mobPoster: "/BGs/posters/about-mob.jpg",
     layout: "centered",
     type: "about",
@@ -145,6 +152,7 @@ export const homepageSectionData: HomepageSectionDataType[] = [
     backgroundMp4: "/BGs/maintainance.mp4",
     poster: "/BGs/posters/maintainance.jpg",
     mobBackgroundWebm: "/BGs/maintainance-mob.webm",
+    mobBackgroundMp4: "/BGs/maintainance-done_reduced.mp4",
     mobPoster: "/BGs/posters/maintainance-mob.jpg",
     layout: "right-aligned",
     sectionDetailRelatedId: "service-1",
@@ -184,7 +192,7 @@ export const homepageSectionData: HomepageSectionDataType[] = [
       },
       {
         id: "ventilation-system",
-        zoneDataId: "fire-safety", // Assuming ventilation relates to fire safety
+        zoneDataId: "waste-ventilation-system", // Assuming ventilation relates to fire safety
         position: {
           top: "28%",
           left: "52%",
@@ -225,6 +233,7 @@ export const homepageSectionData: HomepageSectionDataType[] = [
     backgroundMp4: "/BGs/garbage.mp4",
     poster: "/BGs/posters/garbage.jpg",
     mobBackgroundWebm: "/BGs/garbage-mob.webm",
+    mobBackgroundMp4: "/BGs/garbage-done_reduced.mp4",
     mobPoster: "/BGs/posters/garbage-mob.jpg",
     type: "services",
     sectionDetailRelatedId: "service-2",
@@ -272,6 +281,7 @@ export const homepageSectionData: HomepageSectionDataType[] = [
     backgroundMp4: "/BGs/HVAC.mp4",
     poster: "/BGs/posters/HVAC.jpg",
     mobBackgroundWebm: "/BGs/HVAC-mob.webm",
+    mobBackgroundMp4: "/BGs/HVAC-done_reduced.mp4",
     mobPoster: "/BGs/posters/HVAC-mob.jpg",
     type: "services",
     sectionDetailRelatedId: "service-2",
@@ -335,6 +345,7 @@ export const homepageSectionData: HomepageSectionDataType[] = [
     backgroundMp4: "/BGs/lighting.mp4",
     poster: "/BGs/posters/lighting.jpg",
     mobBackgroundWebm: "/BGs/lighting-mob.webm",
+    mobBackgroundMp4: "/BGs/lighting-done_reduced.mp4",
     mobPoster: "/BGs/posters/lighting-mob.jpg",
     sectionDetailRelatedId: "service-3",
     layout: "left-aligned",
@@ -430,6 +441,7 @@ export const homepageSectionData: HomepageSectionDataType[] = [
     backgroundMp4: "/BGs/steel-1.mp4",
     poster: "/BGs/posters/steel-1.jpg",
     mobBackgroundWebm: "/BGs/steel-1-mob.webm",
+    mobBackgroundMp4: "/BGs/steel-1-done_reduced.mp4",
     mobPoster: "/BGs/posters/steel-1-mob.jpg",
     type: "projects",
     sectionDetailRelatedId: "project-1",
@@ -493,6 +505,7 @@ export const homepageSectionData: HomepageSectionDataType[] = [
     backgroundMp4: "/BGs/steel-2.mp4",
     poster: "/BGs/posters/steel-2.jpg",
     mobBackgroundWebm: "/BGs/steel-2-mob.webm",
+    mobBackgroundMp4: "/BGs/steel-2-done_reduced.mp4",
     mobPoster: "/BGs/posters/steel-2-mob.jpg",
     layout: "left-aligned",
     type: "services",
@@ -539,6 +552,7 @@ export const homepageSectionData: HomepageSectionDataType[] = [
     backgroundMp4: "/BGs/steel-3.mp4",
     poster: "/BGs/posters/steel-3.jpg",
     mobBackgroundWebm: "/BGs/steel-3-mob.webm",
+    mobBackgroundMp4: "/BGs/steel-3-done_reduced.mp4",
     mobPoster: "/BGs/posters/steel-3-mob.jpg",
     layout: "centered",
     type: "services",

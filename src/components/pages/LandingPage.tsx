@@ -17,7 +17,7 @@ interface LandingPageProps<T> {
 const headerBackgrounds: { [key: string]: string } = {
   about: "/assets/about-us-header.jpeg",
   services: "/assets/about-us-header.jpeg",
-  community: "/community/community-header.webm",
+  community: "/community/community-header.mp4",
   careers: "/assets/careers-header.jpeg",
   contact: "/assets/contact-us-header.jpeg",
   projects: "/assets/projects-header.jpeg",
@@ -52,9 +52,9 @@ const LandingPage = <T,>({
         {category === "community" ? (
           <LazyVideo
             className="category-video-bg"
-            poster="/community/videoPoster.jpg"
-            srcWebm={backgroundImage}
-            srcMp4={""}
+            // poster="/community/videoPoster.jpg"
+            srcMp4={backgroundImage}
+            category={category}
           />
         ) : (
           <div
@@ -67,7 +67,6 @@ const LandingPage = <T,>({
 
         {/* Logo & Title */}
         <img
-          loading="lazy"
           src="/assets/logo-light-300x300.png"
           alt="Logo"
           className="category-logo"

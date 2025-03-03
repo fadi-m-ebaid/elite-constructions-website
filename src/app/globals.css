@@ -141,7 +141,7 @@ body {
   &.centered .container {
     position: absolute;
     left: 50%;
-    top: 75%;
+    top: 75vh;
     transform: translate(-50%, -50%);
     max-width: 60vw;
     max-height: 50%;
@@ -171,7 +171,7 @@ body {
   }
 
   .homepageSection-title {
-    font-size: 2.5vw;
+    font-size: 2.4vw;
     font-weight: 900;
     margin-bottom: 20px;
     border-left: 0.5vw solid var(--primary-color);
@@ -183,12 +183,13 @@ body {
   }
 
   .homepageSection-content {
-    font-size: 1.4vw;
+    font-size: 1.3vw;
     font-weight: 400;
     transform: translateY(10px); /* Initially shifted down */
     opacity: 1;
     transform: translateY(0);
     color: #333;
+    margin-bottom: 5px;
   }
 
   .homepageSection-title,
@@ -246,14 +247,15 @@ body {
   /* Small, Fixed Target Animation */
   .target-animation {
     position: absolute;
-    width: 40px;
-    height: 40px;
-    opacity: 0.9;
+    width: 35px;
+    height: 35px;
+    opacity: 0.8;
     pointer-events: none;
     /* transform: translate(-50%, -50%); */
     border: 3px double var(--primary-color);
     border-radius: 50%;
   }
+  
 
   /* Ensures video remains exactly at the center of the hover zone */
   .hover-video {
@@ -267,7 +269,7 @@ body {
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 600px) {
   .background-video {
     object-fit: cover;
     height: 100.1vh !important;
@@ -314,11 +316,13 @@ body {
     .our-values {
       margin-top: 25vh !important;
       text-align: center !important;
+      transition: transform 0.9s ease, box-shadow 0.3s ease;
 
       h2 {
         font-size: 1.5rem !important;
         font-weight: 700 !important;
         font-style: inherit !important;
+        color: var(--tertiary-color) !important;
       }
       .values-icons {
         display: flex !important;
@@ -330,9 +334,13 @@ body {
         margin-top: 20px;
       }
       .valueIcon{
-        box-shadow: 0 2px 3px rgb(226, 155, 103); /* Adds a soft shadow */
+        color: var(--primary-color);
+        font-size: 25px;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
+    }
+    .our-values:hover{
+      transform: scale(1.1);
     }
   }
 
@@ -2305,15 +2313,23 @@ textarea {
 .landingPage-slider-arrow-icon:hover {
   opacity: 0.7;
 }
+
 .category-image-2 {
-  overflow: hidden; /* ✅ Prevents image from spilling outside */
+  overflow: hidden; /* Prevents image from spilling outside */
+}
+.category-image-2 img {
+  width: 100%; /* Ensures image fits inside container */
+  height: 36vh; /* Sets height relative to viewport */
+  object-fit: cover; /* Maintains aspect ratio and crops when necessary */
+  transition: transform 0.8s ease-in-out; /* Smooth zoom effect */
+}
+/* Optional: Adjust height for mobile view */
+@media (max-width: 600px) {
+  .category-image-2 img {
+    height: auto; /* Let the image resize naturally on smaller screens */
+  }
 }
 
-.category-image-2 img {
-  width: 100%; /* ✅ Ensures image fits inside container */
-  height: 36vh;
-  transition: transform 0.8s ease-in-out; /* ✅ Smooth zoom effect */
-}
 
 .category-image-2 img:hover {
   transform: scale(1.1); /* ✅ Zooms the image */
