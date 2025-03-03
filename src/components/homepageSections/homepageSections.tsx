@@ -121,9 +121,13 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
             onMouseLeave={handleMouseLeave}
           >
             {/* ✅ Target Animation (Lazy Loaded) */}
-            <LazyVideo
+            <video
+              autoPlay
+              playsInline
+              loop
+              muted
               className="target-animation"
-              srcWebm="/homepage-popups-2/Target_transparent.webm"
+              src="/homepage-popups-2/Target_transparent.webm"
             />
 
             {/* ✅ Hovered video inside the zone (Lazy Loaded) */}

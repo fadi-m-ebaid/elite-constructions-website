@@ -52,9 +52,9 @@ const LandingPage = <T,>({
         {category === "community" ? (
           <LazyVideo
             className="category-video-bg"
-            poster="/community/videoPoster.jpg"
-            srcWebm={backgroundImage}
-            srcMp4={""}
+            // poster="/community/videoPoster.jpg"
+            srcMp4={backgroundImage}
+            category={category}
           />
         ) : (
           <div
