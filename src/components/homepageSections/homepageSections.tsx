@@ -216,32 +216,29 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
     poster,
   } = section;
 
-  // State to track hover and fade effect
+  // State for hover effects and content updates
   const [hoveredZone, setHoveredZone] = useState<HomepageHoverDataType | null>(null);
   const [fade, setFade] = useState(false);
-  // State for content to display (so we can update it after fade-out)
   const [displayData, setDisplayData] = useState({ title, content });
   const [isMobile, setIsMobile] = useState<boolean>(false);
-  // Track if the background video is fully loaded
   const [backgroundLoaded, setBackgroundLoaded] = useState(false);
 
-  // Initialize AOS for scroll animations
+  // Initialize scroll animations
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
 
-  // Update isMobile based on the window's width.
+  // Update isMobile based on window width
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
     };
-
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Hover zone mouse handlers
+  // Hover zone handlers
   const handleMouseEnter = (zoneId: string) => {
     setFade(true);
     setTimeout(() => {
@@ -263,12 +260,12 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
     }, 500);
   };
 
-  // Callback for when the background video has loaded
+  // Callback when the background video is loaded
   const handleVideoLoaded = () => {
     setBackgroundLoaded(true);
   };
 
-  // Key to force re-rendering based on device type
+  // Force a re-render based on device type
   const videoKey = isMobile ? "mobile" : "desktop";
 
   return (
@@ -277,18 +274,19 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
       className={`homepageSection ${layout}`}
       style={{ visibility: "visible" }}
     >
-      {/* Background Video (Preloaded and Always Visible) */}
+      {/* Background Video: always play to avoid flickering */}
       <LazyVideo
         key={videoKey}
         className="background-video"
+        alwaysPlay={true} // Bypass lazy-loading for background video
         poster={isMobile ? mobPoster : poster}
-        // If you need webm sources, uncomment and set accordingly:
-        // srcWebm={isMobile ? mobBackgroundWebm : backgroundWebm}
         srcMp4={isMobile ? mobBackgroundMp4 : backgroundMp4}
+        // Uncomment the next line if you want to include a webm source:
+        // srcWebm={isMobile ? mobBackgroundWebm : backgroundWebm}
         onLoaded={handleVideoLoaded}
       />
 
-      {/* Render Hover Zones with Videos */}
+      {/* Hover Zones */}
       <div className="hoverZones-container">
         {hoverZones?.map((zone) => (
           <div
@@ -312,7 +310,6 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
             onMouseEnter={() => handleMouseEnter(zone.zoneDataId)}
             onMouseLeave={handleMouseLeave}
           >
-            {/* Target Animation (Lazy Loaded) */}
             <video
               autoPlay
               playsInline
@@ -321,8 +318,6 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
               className="target-animation"
               src="/homepage-popups-2/Target_transparent.webm"
             />
-
-            {/* Hovered video inside the zone */}
             {hoveredZone?.id === zone.zoneDataId &&
               hoveredZone.onHoverTitle && (
                 <img
