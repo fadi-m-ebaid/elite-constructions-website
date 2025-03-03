@@ -1,3 +1,5 @@
+
+
 // "use client";
 
 // import React, { useState, useEffect } from "react";
@@ -36,20 +38,29 @@
 //     poster,
 //   } = section;
 
-//   // State to track hover and fade effect
-//   const [hoveredZone, setHoveredZone] = useState<HomepageHoverDataType | null>(
-//     null
-//   );
+//   // State for hover effects and content updates
+//   const [hoveredZone, setHoveredZone] = useState<HomepageHoverDataType | null>(null);
 //   const [fade, setFade] = useState(false);
-//   // State for content to display (so we can update it after fade-out)
 //   const [displayData, setDisplayData] = useState({ title, content });
 //   const [isMobile, setIsMobile] = useState<boolean>(false);
+//   const [backgroundLoaded, setBackgroundLoaded] = useState(false);
 
-//   // Initialize AOS for scroll animations
+//   // Initialize scroll animations
 //   useEffect(() => {
 //     AOS.init({ duration: 1000 });
 //   }, []);
 
+//   // Update isMobile based on window width
+//   useEffect(() => {
+//     const handleResize = () => {
+//       setIsMobile(window.innerWidth < 768);
+//     };
+//     handleResize();
+//     window.addEventListener("resize", handleResize);
+//     return () => window.removeEventListener("resize", handleResize);
+//   }, []);
+
+//   // Hover zone handlers
 //   const handleMouseEnter = (zoneId: string) => {
 //     setFade(true);
 //     setTimeout(() => {
@@ -71,32 +82,33 @@
 //     }, 500);
 //   };
 
-//   // Update isMobile based on the window's width.
-//   useEffect(() => {
-//     const handleResize = () => {
-//       setIsMobile(window.innerWidth < 768);
-//     };
+//   // Callback when the background video is loaded
+//   const handleVideoLoaded = () => {
+//     setBackgroundLoaded(true);
+//   };
 
-//     // Initialize the state and add resize event listener.
-//     handleResize();
-//     window.addEventListener("resize", handleResize);
-//     return () => window.removeEventListener("resize", handleResize);
-//   }, []);
-
+//   // Force a re-render based on device type
 //   const videoKey = isMobile ? "mobile" : "desktop";
 
 //   return (
-//     <section id={id} className={`homepageSection ${layout}`}>
-//       {/* ✅ Background Video (Lazy Loaded) */}
+//     <section
+//       id={id}
+//       className={`homepageSection ${layout}`}
+//       style={{ visibility: "visible" }}
+//     >
+//       {/* Background Video: always play to avoid flickering */}
 //       <LazyVideo
 //         key={videoKey}
 //         className="background-video"
+//         alwaysPlay={true} // Bypass lazy-loading for background video
 //         poster={isMobile ? mobPoster : poster}
-//         // srcWebm={isMobile ? mobBackgroundWebm : backgroundWebm}
 //         srcMp4={isMobile ? mobBackgroundMp4 : backgroundMp4}
+//         // Uncomment the next line if you want to include a webm source:
+//         // srcWebm={isMobile ? mobBackgroundWebm : backgroundWebm}
+//         onLoaded={handleVideoLoaded}
 //       />
 
-//       {/* ✅ Render Hover Zones with Videos */}
+//       {/* Hover Zones */}
 //       <div className="hoverZones-container">
 //         {hoverZones?.map((zone) => (
 //           <div
@@ -120,7 +132,6 @@
 //             onMouseEnter={() => handleMouseEnter(zone.zoneDataId)}
 //             onMouseLeave={handleMouseLeave}
 //           >
-//             {/* ✅ Target Animation (Lazy Loaded) */}
 //             <video
 //               autoPlay
 //               playsInline
@@ -129,14 +140,12 @@
 //               className="target-animation"
 //               src="/homepage-popups-2/Target_transparent.webm"
 //             />
-
-//             {/* ✅ Hovered video inside the zone (Lazy Loaded) */}
 //             {hoveredZone?.id === zone.zoneDataId &&
 //               hoveredZone.onHoverTitle && (
 //                 <img
-//                   // loading="lazy"
 //                   className="hover-video"
 //                   src={hoveredZone.onHoverTitle}
+//                   alt=""
 //                 />
 //               )}
 //           </div>
@@ -165,7 +174,7 @@
 //                 <p>Integrity</p>
 //               </div>
 //               <div>
-//                 <FontAwesomeIcon icon={faBullseye}  className="valueIcon"/>
+//                 <FontAwesomeIcon icon={faBullseye} className="valueIcon" />
 //                 <p>Efficiency</p>
 //               </div>
 //             </div>
@@ -177,6 +186,8 @@
 // };
 
 // export default HomepageSection;
+
+
 
 "use client";
 
@@ -228,14 +239,14 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
     AOS.init({ duration: 1000 });
   }, []);
 
-  // Update isMobile based on window width
+  // Use matchMedia to detect mobile screen changes immediately.
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
+    setIsMobile(mediaQuery.matches);
+
+    const handleChange = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
 
   // Hover zone handlers
@@ -265,7 +276,7 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
     setBackgroundLoaded(true);
   };
 
-  // Force a re-render based on device type
+  // Force a re-render based on device type by using a key.
   const videoKey = isMobile ? "mobile" : "desktop";
 
   return (
