@@ -1,3 +1,5 @@
+//
+
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
@@ -17,6 +19,7 @@ interface LazyVideoProps {
   poster?: string;
   mobPoster?: string;
   category?: string;
+  onLoaded?: () => void; // Callback to signal when video is loaded
 }
 
 const LazyVideo: React.FC<LazyVideoProps> = ({
@@ -34,12 +37,12 @@ const LazyVideo: React.FC<LazyVideoProps> = ({
   poster = "",
   mobPoster,
   category,
+  onLoaded,
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
-  // Use IntersectionObserver with a delay on pausing (hysteresis)
+  // Use IntersectionObserver solely to control play/pause (with hysteresis)
   useEffect(() => {
     let pauseTimer: ReturnType<typeof setTimeout> | null = null;
     const thresholdValue = category === "community" ? 0.2 : 0.4;
@@ -47,17 +50,14 @@ const LazyVideo: React.FC<LazyVideoProps> = ({
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          // Cancel any pending pause
           if (pauseTimer) {
             clearTimeout(pauseTimer);
             pauseTimer = null;
           }
-          setIsVisible(true);
           videoRef.current?.play();
         } else {
-          // Delay pausing to avoid flickering on brief scrolls
+          // Delay pausing to prevent flicker
           pauseTimer = setTimeout(() => {
-            setIsVisible(false);
             videoRef.current?.pause();
           }, 500);
         }
@@ -71,60 +71,47 @@ const LazyVideo: React.FC<LazyVideoProps> = ({
     if (videoRef.current) {
       observer.observe(videoRef.current);
     }
-
     return () => {
       observer.disconnect();
       if (pauseTimer) clearTimeout(pauseTimer);
     };
   }, [category]);
 
-  // Detect mobile screen using window.innerWidth
+  // Detect mobile screen
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Re-trigger video play on orientation change if video is visible
-  useEffect(() => {
-    const handleOrientationChange = () => {
-      if (videoRef.current && isVisible) {
-        videoRef.current.play();
-      }
-    };
-
-    window.addEventListener("orientationchange", handleOrientationChange);
-    return () =>
-      window.removeEventListener("orientationchange", handleOrientationChange);
-  }, [isVisible]);
-
-  // Use mobile sources if on a mobile device and mobile props are provided
-  const videoSrcWebm = isMobile && mobSrcWebm ? mobSrcWebm : srcWebm;
-  const videoSrcMp4 = isMobile && mobSrcMp4 ? mobSrcMp4 : srcMp4;
-  const videoSrcWebp = isMobile && mobSrcWebp ? mobSrcWebp : srcWebp;
-  const videoPoster = isMobile && mobPoster ? mobPoster : poster;
-
+  // Ensure video loads and fires callback when ready
   return (
     <video
       ref={videoRef}
-      className={`${className} ${isVisible ? "loaded" : "loading"}`}
+      className={`${className} loaded`} // Always "loaded" so it's visible
       muted={muted}
       loop={loop}
       playsInline={playsInline}
       {...{ "webkit-playsinline": "true" }}
-      autoPlay={isVisible && autoPlay}
+      autoPlay={autoPlay}
       preload="auto"
-      // Removing the poster helps avoid flashes when the video pauses.
-      style={{ backgroundColor: "#000" }}
-      // poster={videoPoster}
+      poster={isMobile && mobPoster ? mobPoster : poster}
+      style={{ backgroundColor: "#d3d3d3" }}
+      onLoadedData={onLoaded} // Signal to parent when loaded
     >
-      {videoSrcMp4 && <source src={videoSrcMp4} type="video/mp4" />}
-      {videoSrcWebm && <source src={videoSrcWebm} type="video/webm" />}
-      {/* {videoSrcWebp && <source src={videoSrcWebp} type="video/webp" />} */}
+      {isMobile && mobSrcMp4 ? (
+        <source src={mobSrcMp4} type="video/mp4" />
+      ) : (
+        srcMp4 && <source src={srcMp4} type="video/mp4" />
+      )}
+      {isMobile && mobSrcWebm ? (
+        <source src={mobSrcWebm} type="video/webm" />
+      ) : (
+        srcWebm && <source src={srcWebm} type="video/webm" />
+      )}
+      {/* Optional: include webp source if provided */}
+      {srcWebp && <source src={srcWebp} type="video/webp" />}
       Your browser does not support the video tag.
     </video>
   );
