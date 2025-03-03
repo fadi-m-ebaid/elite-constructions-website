@@ -67,7 +67,6 @@ const LandingPage = <T,>({
 
         {/* Logo & Title */}
         <img
-          loading="lazy"
           src="/assets/logo-light-300x300.png"
           alt="Logo"
           className="category-logo"
