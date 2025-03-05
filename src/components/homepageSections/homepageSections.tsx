@@ -231,7 +231,7 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
   const [displayData, setDisplayData] = useState({ title, content });
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [backgroundLoaded, setBackgroundLoaded] = useState(false);
-  const [webpLoaded, setWebpLoaded] = useState(false);
+  
 
   // Initialize scroll animations
   useEffect(() => {
@@ -333,13 +333,10 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
                 <picture>
                   <source srcSet={hoveredZone.onHoverTitle} type="image/webp" />
                   <img
-                    className={`hover-video ${
-                      webpLoaded ? "visible" : "hidden"
-                    }`}
-                    src={hoveredZone.onHoverTitle}
+                    className="hover-video"
+                    src={hoveredZone.onHoverTitle} // Fallback for browsers that don't support WebP
                     alt="Animated WebP"
                     decoding="async"
-                    onLoad={() => setWebpLoaded(true)} // Marks WebP as loaded
                   />
                 </picture>
               )}
