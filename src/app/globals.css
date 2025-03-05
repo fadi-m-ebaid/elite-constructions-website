@@ -265,23 +265,7 @@ body {
     transform: translate(-50%, -50%);
     width: 30vw; /* Adjust size if needed */
     height: auto;
-    pointer-events: auto;
-    z-index: 1000;
-    opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-  }
-
-  .hover-video.visible {
-    opacity: 1;
-  }
-
-  .hover-video:hover {
-    animation: restart-webp 0.01s steps(1) infinite;
-  }
-  
-  @keyframes restart-webp {
-    from { opacity: 1; }
-    to { opacity: 0.99; }
+    pointer-events: none; /* Prevents unwanted interaction */
   }
 }
 
