@@ -1,5 +1,3 @@
-
-
 // "use client";
 
 // import React, { useState, useEffect } from "react";
@@ -187,8 +185,6 @@
 
 // export default HomepageSection;
 
-
-
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -228,11 +224,14 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
   } = section;
 
   // State for hover effects and content updates
-  const [hoveredZone, setHoveredZone] = useState<HomepageHoverDataType | null>(null);
+  const [hoveredZone, setHoveredZone] = useState<HomepageHoverDataType | null>(
+    null
+  );
   const [fade, setFade] = useState(false);
   const [displayData, setDisplayData] = useState({ title, content });
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [backgroundLoaded, setBackgroundLoaded] = useState(false);
+  const [webpLoaded, setWebpLoaded] = useState(false);
 
   // Initialize scroll animations
   useEffect(() => {
@@ -321,22 +320,28 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
             onMouseEnter={() => handleMouseEnter(zone.zoneDataId)}
             onMouseLeave={handleMouseLeave}
           >
-            <video
+            <LazyVideo
               autoPlay
               playsInline
               loop
               muted
               className="target-animation"
-              src="/homepage-popups-2/Target_transparent_noaudio.mp4"
+              srcMp4="/homepage-popups-2/Target_transparent_noaudio.mp4"
             />
             {hoveredZone?.id === zone.zoneDataId &&
               hoveredZone.onHoverTitle && (
-                <img
-                  className="hover-video"
-                  src={hoveredZone.onHoverTitle}
-                  alt=""
-                  decoding="async"
-                />
+                <picture>
+                  <source srcSet={hoveredZone.onHoverTitle} type="image/webp" />
+                  <img
+                    className={`hover-video ${
+                      webpLoaded ? "visible" : "hidden"
+                    }`}
+                    src={hoveredZone.onHoverTitle}
+                    alt="Animated WebP"
+                    decoding="async"
+                    onLoad={() => setWebpLoaded(true)} // Marks WebP as loaded
+                  />
+                </picture>
               )}
           </div>
         ))}
