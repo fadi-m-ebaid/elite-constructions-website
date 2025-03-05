@@ -12,6 +12,7 @@ import { ContactData } from "@/data/contactUsData";
 import LoadingSpinner from "@/components/common/Spinner";
 import { AboutData } from "@/data/AboutData";
 import PageLoader from "@/components/common/PageLoader";
+import NotFound from "@/components/pages/NotFound";
 
 // Map each category to its data source
 
@@ -33,7 +34,7 @@ const CategoryPage = () => {
   const layout = categoryLayouts[category];
 
   if (!data || !layout) {
-    return <p>Page not found</p>;
+    return <NotFound />;
   }
 
   return (

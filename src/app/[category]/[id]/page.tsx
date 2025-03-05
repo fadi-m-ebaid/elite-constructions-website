@@ -8,6 +8,7 @@ import { CommunityData } from "@/data/communityData";
 import { CategoryDetailLayouts } from "@/components/layouts/categoryDetailLayouts";
 import LoadingSpinner from "@/components/common/Spinner";
 import PageLoader from "@/components/common/PageLoader";
+import NotFound from "@/components/pages/NotFound";
 
 /**
  * The props that your page component receives.
@@ -44,7 +45,7 @@ function DynamicDetail({ params, searchParams }: DynamicDetailProps) {
 
   // If data or layout is not found, show a "Page not found" message.
   if (!data || !layout) {
-    return <p>Page not found</p>;
+    return <NotFound />;
   }
 
   // Render the DetailPage with the proper props.
