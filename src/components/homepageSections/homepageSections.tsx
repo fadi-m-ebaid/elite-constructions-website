@@ -327,7 +327,7 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
               loop
               muted
               className="target-animation"
-              src="/homepage-popups-2/Target_transparent.webm"
+              src="/homepage-popups-2/Target_transparent_noaudio.mp4"
             />
             {hoveredZone?.id === zone.zoneDataId &&
               hoveredZone.onHoverTitle && (
@@ -335,6 +335,7 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
                   className="hover-video"
                   src={hoveredZone.onHoverTitle}
                   alt=""
+                  decoding="async"
                 />
               )}
           </div>
