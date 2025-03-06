@@ -37,25 +37,28 @@
 //   } = section;
 
 //   // State for hover effects and content updates
-//   const [hoveredZone, setHoveredZone] = useState<HomepageHoverDataType | null>(null);
+//   const [hoveredZone, setHoveredZone] = useState<HomepageHoverDataType | null>(
+//     null
+//   );
 //   const [fade, setFade] = useState(false);
 //   const [displayData, setDisplayData] = useState({ title, content });
 //   const [isMobile, setIsMobile] = useState<boolean>(false);
 //   const [backgroundLoaded, setBackgroundLoaded] = useState(false);
+  
 
 //   // Initialize scroll animations
 //   useEffect(() => {
 //     AOS.init({ duration: 1000 });
 //   }, []);
 
-//   // Update isMobile based on window width
+//   // Use matchMedia to detect mobile screen changes immediately.
 //   useEffect(() => {
-//     const handleResize = () => {
-//       setIsMobile(window.innerWidth < 768);
-//     };
-//     handleResize();
-//     window.addEventListener("resize", handleResize);
-//     return () => window.removeEventListener("resize", handleResize);
+//     const mediaQuery = window.matchMedia("(max-width: 767px)");
+//     setIsMobile(mediaQuery.matches);
+
+//     const handleChange = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+//     mediaQuery.addEventListener("change", handleChange);
+//     return () => mediaQuery.removeEventListener("change", handleChange);
 //   }, []);
 
 //   // Hover zone handlers
@@ -85,7 +88,7 @@
 //     setBackgroundLoaded(true);
 //   };
 
-//   // Force a re-render based on device type
+//   // Force a re-render based on device type by using a key.
 //   const videoKey = isMobile ? "mobile" : "desktop";
 
 //   return (
@@ -130,21 +133,25 @@
 //             onMouseEnter={() => handleMouseEnter(zone.zoneDataId)}
 //             onMouseLeave={handleMouseLeave}
 //           >
-//             <video
+//             <LazyVideo
 //               autoPlay
 //               playsInline
 //               loop
 //               muted
 //               className="target-animation"
-//               src="/homepage-popups-2/Target_transparent.webm"
+//               srcMp4="/homepage-popups-2/Target_transparent_noaudio.mp4"
 //             />
 //             {hoveredZone?.id === zone.zoneDataId &&
 //               hoveredZone.onHoverTitle && (
-//                 <img
-//                   className="hover-video"
-//                   src={hoveredZone.onHoverTitle}
-//                   alt=""
-//                 />
+//                 <picture>
+//                   <source srcSet={hoveredZone.onHoverTitle} type="image/webp" />
+//                   <img
+//                     className="hover-video"
+//                     src={hoveredZone.onHoverTitle} // Fallback for browsers that don't support WebP
+//                     alt="Animated WebP"
+//                     decoding="async"
+//                   />
+//                 </picture>
 //               )}
 //           </div>
 //         ))}
@@ -185,6 +192,7 @@
 
 // export default HomepageSection;
 
+
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -223,33 +231,28 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
     poster,
   } = section;
 
+  // Detect device type
+  const [deviceType, setDeviceType] = useState<"mobile" | "desktop">("desktop");
+
   // State for hover effects and content updates
-  const [hoveredZone, setHoveredZone] = useState<HomepageHoverDataType | null>(
-    null
-  );
+  const [hoveredZone, setHoveredZone] = useState<HomepageHoverDataType | null>(null);
   const [fade, setFade] = useState(false);
   const [displayData, setDisplayData] = useState({ title, content });
-  const [isMobile, setIsMobile] = useState<boolean>(false);
   const [backgroundLoaded, setBackgroundLoaded] = useState(false);
-  
 
   // Initialize scroll animations
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
 
-  // Use matchMedia to detect mobile screen changes immediately.
+  // Detect if the device is mobile
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 767px)");
-    setIsMobile(mediaQuery.matches);
-
-    const handleChange = (e: MediaQueryListEvent) => setIsMobile(e.matches);
-    mediaQuery.addEventListener("change", handleChange);
-    return () => mediaQuery.removeEventListener("change", handleChange);
+    const isMobileDevice = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    setDeviceType(isMobileDevice ? "mobile" : "desktop");
   }, []);
 
-  // Hover zone handlers
-  const handleMouseEnter = (zoneId: string) => {
+  // Handle hover and touch interactions
+  const handleInteractionStart = (zoneId: string) => {
     setFade(true);
     setTimeout(() => {
       const hoverItem = hoverZonesData.find((item) => item.id === zoneId);
@@ -258,16 +261,20 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
         setDisplayData({ title: hoverItem.title, content: hoverItem.content });
       }
       setFade(false);
-    }, 500);
+    }, 100); // Short delay for smooth transition
   };
 
-  const handleMouseLeave = () => {
-    setFade(true);
-    setTimeout(() => {
-      setHoveredZone(null);
-      setDisplayData({ title, content });
-      setFade(false);
-    }, 500);
+  const handleInteractionEnd = () => {
+    if (deviceType === "desktop") {
+      // For desktop, remove popup on mouse leave
+      setFade(true);
+      setTimeout(() => {
+        setHoveredZone(null);
+        setDisplayData({ title, content });
+        setFade(false);
+      }, 100);
+    }
+    // For mobile, don't remove on touch end to prevent disappearing issues
   };
 
   // Callback when the background video is loaded
@@ -276,7 +283,7 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
   };
 
   // Force a re-render based on device type by using a key.
-  const videoKey = isMobile ? "mobile" : "desktop";
+  const videoKey = deviceType === "mobile" ? "mobile" : "desktop";
 
   return (
     <section
@@ -289,10 +296,8 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
         key={videoKey}
         className="background-video"
         alwaysPlay={true} // Bypass lazy-loading for background video
-        poster={isMobile ? mobPoster : poster}
-        srcMp4={isMobile ? mobBackgroundMp4 : backgroundMp4}
-        // Uncomment the next line if you want to include a webm source:
-        // srcWebm={isMobile ? mobBackgroundWebm : backgroundWebm}
+        poster={deviceType === "mobile" ? mobPoster : poster}
+        srcMp4={deviceType === "mobile" ? mobBackgroundMp4 : backgroundMp4}
         onLoaded={handleVideoLoaded}
       />
 
@@ -303,7 +308,7 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
             key={zone.id}
             className="hoverZone"
             style={
-              isMobile
+              deviceType === "mobile"
                 ? {
                     top: zone.mobPosition?.top,
                     left: zone.mobPosition?.left,
@@ -317,8 +322,12 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
                     height: zone.position.height,
                   }
             }
-            onMouseEnter={() => handleMouseEnter(zone.zoneDataId)}
-            onMouseLeave={handleMouseLeave}
+            onMouseEnter={() => deviceType === "desktop" && handleInteractionStart(zone.zoneDataId)}
+            onMouseLeave={() => deviceType === "desktop" && handleInteractionEnd()}
+            onTouchStart={(e) => {
+              e.preventDefault(); // Prevents instant disappearance
+              handleInteractionStart(zone.zoneDataId);
+            }}
           >
             <LazyVideo
               autoPlay
@@ -353,7 +362,7 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
             Read More <span className="arrow-icon">➝</span>
           </Link>
         </div>
-        {id === "infrastructure" && isMobile && (
+        {id === "infrastructure" && deviceType === "mobile" && (
           <div className="our-values">
             <h2 className="values-title">Our Values</h2>
             <div className="values-icons flex gb-2">
