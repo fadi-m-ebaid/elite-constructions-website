@@ -346,17 +346,16 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
             />
             {hoveredZone?.id === zone.zoneDataId &&
               hoveredZone.onHoverTitle && (
-                <picture>
-                  <source srcSet={hoveredZone.onHoverTitle} type="image/webp" />
-                  <img
-                    className="hover-video"
-                    src={hoveredZone.onHoverTitle} // Fallback for browsers that don't support WebP
-                    // autoPlay
-                    // playsInline
-                    // loop
-                    // muted
-                  />
-                </picture>
+                <img
+                  className="hover-video"
+                  src={hoveredZone.onHoverTitle} // Fallback for browsers that don't support WebP
+                  // autoPlay
+                  // playsInline
+                  // loop
+                  // muted
+                  alt="Animated WebP"
+                  decoding="async"
+                />
               )}
           </div>
         ))}
