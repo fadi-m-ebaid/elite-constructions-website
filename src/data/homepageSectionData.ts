@@ -4,118 +4,118 @@ import { HomepageSectionDataType } from "@/types/homepageSectionTypes";
 export const hoverZonesData: HomepageHoverDataType[] = [
   {
     id: "hvacIn",
-    onHoverTitle: "/homepage-popups-2/hvacIn.webp",
+    onHoverTitle: "/homepage-popups-2/hvacIn.webm",
     title: "HVAC In-Door",
     content:
       "HVAC stands for Heating, Ventilation, and Air Conditioning. It is a term used to describe the technology and systems involved in providing indoor climate control within buildings. HVAC systems are designed to ensure comfort, maintain air quality, and regulate temperature and humidity levels in residential, commercial, and industrial spaces. The components of HVAC work together to create a controlled and comfortable environment by addressing heating, ventilation, and air conditioning needs. Here at Elite, we offer the following regarding HVAC.",
   },
   {
     id: "hvacOut",
-    onHoverTitle: "/homepage-popups-2/hvacOut.webp",
+    onHoverTitle: "/homepage-popups-2/hvacOut.webm",
     title: "HVAC Out-Door",
     content:
       "HVAC stands for Heating, Ventilation, and Air Conditioning. It is a term used to describe the technology and systems involved in providing indoor climate control within buildings. HVAC systems are designed to ensure comfort, maintain air quality, and regulate temperature and humidity levels in residential, commercial, and industrial spaces. The components of HVAC work together to create a controlled and comfortable environment by addressing heating, ventilation, and air conditioning needs. Here at Elite, we offer the following regarding HVAC.",
   },
   {
     id: "garbage-chute",
-    onHoverTitle: "/homepage-popups-2/Garbage-chute.webp",
+    onHoverTitle: "/homepage-popups-2/Garbage-chute.webm",
     title: "Garbage Chute",
     content:
       "Our commitment to waste management extends to providing top-notch garbage chute solutions: We are the premier garbage chute provider, offering a diverse range that includes standard chutes and innovative smart solutions. We go beyond basic disposal and include monitoring, sorting capabilities, and seamless integration with Building Management Systems (BMS) and fire alarm systems. We deliver advanced solutions that enhance efficiency and contribute to a smarter waste management approach.",
   },
   {
     "id": "waste-ventilation-system",
-    "onHoverTitle": "/homepage-popups-2/Exhusting-fans.webp",
+    "onHoverTitle": "/homepage-popups-2/Exhusting-fans.webm",
     "title": "Waste Ventilation Exhusting fans",
     "content": "Introducing our innovative Waste Ventilation System – a perfect fusion of advanced garbage chute technology and high-performance exhausting fan systems. This breakthrough solution not only ensures efficient, smart waste disposal with integrated sorting and real-time monitoring, but also optimizes air quality by rapidly extracting odors and contaminants. Fully compatible with modern Building Management Systems (BMS) and fire alarm systems, our system delivers enhanced operational performance and safety, setting a new standard in sustainable facility management."
   },
   {
     id: "led-lighting",
-    onHoverTitle: "/homepage-popups-2/LED.webp",
+    onHoverTitle: "/homepage-popups-2/LED.webm",
     title: "LED Lighting",
     content:
       "Installing smart lighting systems that allow for remote control, automation, and energy efficiency, incorporating features such as motion sensors, dimming controls, and customizable lighting scenes.",
   },
   {
     id: "infrastructure",
-    onHoverTitle: "/homepage-popups-2/Infrastructure.webp",
+    onHoverTitle: "/homepage-popups-2/Infrastructure.webm",
     title: "Infrastructure",
     content:
       "Infrastructure is the fundamental physical and organizational structures, facilities, and systems needed for the operation of a project or the construction industry as a whole. It encompasses a wide range of elements that support and facilitate construction activities, ensuring the smooth functioning of projects. At Elite Group, infrastructure usually refers to supplying the main networks for projects, buildings, or residential complexes.",
   },
   {
     id: "exterior-finishing",
-    onHoverTitle: "/homepage-popups-2/Exterior.webp",
+    onHoverTitle: "/homepage-popups-2/Exterior.webm",
     title: "Exterior Finishing",
     content:
       "Elite excels in a variety of facade types, ensuring a blend of architectural elegance and functional excellence. Some of the facade types we specialize in include curtain wall facades, aluminum panel facades, stone cladding facades, glass facades, and ventilated facades.",
   },
   {
     id: "interior-finishing",
-    onHoverTitle: "/homepage-popups-2/Interior.webp",
+    onHoverTitle: "/homepage-popups-2/Interior.webm",
     title: "Interior Finishing",
     content:
       "We excel in fit-out projects, transforming spaces into functional and appealing environments. We collaborate closely with clients to understand their vision, ensuring a tailored approach. Our expertise includes visualizing concepts, handling interior designs, furniture selection, space optimization, and providing fit-out solutions to enhance the functionality of commercial and residential spaces, leading to seamless project completion.",
   },
   {
     id: "light-systems",
-    onHoverTitle: "/homepage-popups-2/light.webp",
+    onHoverTitle: "/homepage-popups-2/light.webm",
     title: "Light Systems",
     content:
       "Adding the right lighting can transform your space, and here at Elite, we handle all aspects of lighting, from design and selection to installation.",
   },
   {
     id: "hospitality",
-    onHoverTitle: "/homepage-popups-2/hospitality.webp",
+    onHoverTitle: "/homepage-popups-2/hospitality.webm",
     title: "Hospitality",
     content:
       "Providing exceptional hotel services with comprehensive comfort and entertainment options, ensuring a unique and distinguished hospitality experience for guests.",
   },
   {
     id: "fit-out-projects",
-    onHoverTitle: "/homepage-popups-2/Fitout.webp",
+    onHoverTitle: "/homepage-popups-2/Fitout.webm",
     title: "Fit-out Projects",
     content:
       "“Fit out” refers to the process of making an interior space ready for occupation. As a common practice, when constructing commercial buildings, the spaces inside are left bare for the occupants to determine the level of refurbishment needed (or fitting out).",
   },
   {
     id: "pilar-Caf",
-    onHoverTitle: "/homepage-popups-2/pilarCaf.webp",
+    onHoverTitle: "/homepage-popups-2/pilarCaf.webm",
     title: "Pilar Caf",
     content:
       "Elevate the coffee experience by combining traditional brewing methods with modern innovation. Our team dedicates itself to educating customers about coffee cultivation, roasting, and preparation while serving drinks that exceed expectations and  lead the transformation of coffee culture by setting new standards in quality, sustainability, and customer education, making premium coffee accessible and enjoyable for everyone.",
   },
   {
     id: "fire-safety",
-    onHoverTitle: "/homepage-popups-2/Fire.webp",
+    onHoverTitle: "/homepage-popups-2/Fire.webm",
     title: "Fire & Safety",
     content:
       "We specialize in designing and implementing firefighting infrastructure network systems, adhering to NFPA standards, Saudi Code, and rigorous safety standards. Our solutions include firefighting pumping stations, storage tanks, a network of pipes and accessories, fire hydrants, and valve chambers.",
   },
   {
     id: "construction",
-    onHoverTitle: "/homepage-popups-2/constructions.webp",
+    onHoverTitle: "/homepage-popups-2/constructions.webm",
     title: "Construction",
     content:
       "We offer end-to-end construction project solutions, including villas, residential buildings, towers, hotels, and commercial buildings, from inception to handover. Our services include assisting in designs, legal documentation and project initiation, staying within the planned budget, and delivering high-quality results.",
   },
   {
     id: "steelWork",
-    onHoverTitle: "/homepage-popups-2/steelWork.webp",
+    onHoverTitle: "/homepage-popups-2/steelWork.webm",
     title: "Steel Work",
     content:
       "We offer end-to-end construction project solutions, including villas, residential buildings, towers, hotels, and commercial buildings, from inception to handover. Our services include assisting in designs, legal documentation and project initiation, staying within the planned budget, and delivering high-quality results.",
   },
   {
     id: "bmu-worker",
-    onHoverTitle: "/homepage-popups-2/Fitout.webp",
+    onHoverTitle: "/homepage-popups-2/Fitout.webm",
     title: "BMU Worker",
     content:
       "Ensuring safe and efficient maintenance for high-rise buildings involves a comprehensive approach to preserving structural integrity, enhancing safety, and optimizing functionality. Proper maintenance includes routine inspections, preventive measures, and timely repairs to ensure compliance with safety standards and building regulations.",
   },
   {
     id: "pneumatic",
-    onHoverTitle: "/homepage-popups-2/pneumatic.webp",
+    onHoverTitle: "/homepage-popups-2/pneumatic.webm",
     title: "Pneumatic Waste Collection",
     content:
       "Elite offers advanced pneumatic waste collection systems designed for seamless, automated, and eco-friendly waste management. Our solutions ensure efficiency, hygiene, and sustainability by optimizing waste disposal in residential, commercial, and industrial spaces.",

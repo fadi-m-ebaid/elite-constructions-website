@@ -346,15 +346,15 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
             />
             {hoveredZone?.id === zone.zoneDataId &&
               hoveredZone.onHoverTitle && (
-                <img
+                <video
                   className="hover-video"
                   src={hoveredZone.onHoverTitle} // Fallback for browsers that don't support WebP
-                  // autoPlay
-                  // playsInline
-                  // loop
-                  // muted
-                  alt="Animated WebP"
-                  decoding="async"
+                  autoPlay
+                  playsInline
+                  loop
+                  muted
+                  // alt="Animated WebP"
+                  // decoding="async"
                 />
               )}
           </div>
