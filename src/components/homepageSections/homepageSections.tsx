@@ -44,7 +44,6 @@
 //   const [displayData, setDisplayData] = useState({ title, content });
 //   const [isMobile, setIsMobile] = useState<boolean>(false);
 //   const [backgroundLoaded, setBackgroundLoaded] = useState(false);
-  
 
 //   // Initialize scroll animations
 //   useEffect(() => {
@@ -192,7 +191,6 @@
 
 // export default HomepageSection;
 
-
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -235,7 +233,9 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
   const [deviceType, setDeviceType] = useState<"mobile" | "desktop">("desktop");
 
   // State for hover effects and content updates
-  const [hoveredZone, setHoveredZone] = useState<HomepageHoverDataType | null>(null);
+  const [hoveredZone, setHoveredZone] = useState<HomepageHoverDataType | null>(
+    null
+  );
   const [fade, setFade] = useState(false);
   const [displayData, setDisplayData] = useState({ title, content });
   const [backgroundLoaded, setBackgroundLoaded] = useState(false);
@@ -247,7 +247,9 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
 
   // Detect if the device is mobile
   useEffect(() => {
-    const isMobileDevice = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const isMobileDevice = /iPhone|iPad|iPod|Android/i.test(
+      navigator.userAgent
+    );
     setDeviceType(isMobileDevice ? "mobile" : "desktop");
   }, []);
 
@@ -322,8 +324,13 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
                     height: zone.position.height,
                   }
             }
-            onMouseEnter={() => deviceType === "desktop" && handleInteractionStart(zone.zoneDataId)}
-            onMouseLeave={() => deviceType === "desktop" && handleInteractionEnd()}
+            onMouseEnter={() =>
+              deviceType === "desktop" &&
+              handleInteractionStart(zone.zoneDataId)
+            }
+            onMouseLeave={() =>
+              deviceType === "desktop" && handleInteractionEnd()
+            }
             onTouchStart={(e) => {
               e.preventDefault(); // Prevents instant disappearance
               handleInteractionStart(zone.zoneDataId);
@@ -344,8 +351,10 @@ const HomepageSection: React.FC<HomepageSectionProps> = ({ section }) => {
                   <img
                     className="hover-video"
                     src={hoveredZone.onHoverTitle} // Fallback for browsers that don't support WebP
-                    alt="Animated WebP"
-                    decoding="async"
+                    // autoPlay
+                    // playsInline
+                    // loop
+                    // muted
                   />
                 </picture>
               )}
